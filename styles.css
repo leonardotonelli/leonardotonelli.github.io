@@ -1,4 +1,16 @@
-/* Reset some default browser styles */
+/* Profile photo styling */
+.profile-photo {
+  width: 150px;              /* Adjust size as needed */
+  height: 150px;
+  border-radius: 50%;        /* Makes the image circular */
+  object-fit: cover;         /* Ensures image fits within the circle */
+  margin: 20px auto;         /* Center the image horizontally */
+  display: block;
+  border: 3px solid #333;    /* Optional: add a border around the image */
+}
+
+/* Other existing CSS */
+
 * {
   margin: 0;
   padding: 0;
