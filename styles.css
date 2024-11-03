@@ -109,3 +109,11 @@ h3 {
 p {
   color: #666;
 }
+
+/* Styles for job icons */
+.job-icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px; /* Space between icon and text */
+}
