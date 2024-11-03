@@ -1,16 +1,4 @@
-/* Profile photo styling */
-.profile-photo {
-  width: 150px;              /* Adjust size as needed */
-  height: 150px;
-  border-radius: 50%;        /* Makes the image circular */
-  object-fit: cover;         /* Ensures image fits within the circle */
-  margin: 20px auto;         /* Center the image horizontally */
-  display: block;
-  border: 3px solid #333;    /* Optional: add a border around the image */
-}
-
-/* Other existing CSS */
-
+/* Reset some default browser styles */
 * {
   margin: 0;
   padding: 0;
@@ -33,19 +21,63 @@ body {
   border-radius: 8px;
 }
 
+/* Layout for header section */
 header {
-  text-align: center;
   margin-bottom: 20px;
 }
 
-header h1 {
-  font-size: 2.5em;
-  color: #333;
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .bio {
+  flex: 1;
+}
+
+.bio h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.bio p {
   font-size: 1.1em;
   color: #666;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #333; /* Circular border */
+  margin-bottom: 10px;
+}
+
+/* Social links section below profile photo */
+.social-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-links li {
+  display: inline;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
 }
 
 section {
@@ -76,32 +108,4 @@ h3 {
 
 p {
   color: #666;
-}
-
-footer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-footer h2 {
-  font-size: 1.5em;
-}
-
-.social-links {
-  list-style: none;
-  padding: 0;
-}
-
-.social-links li {
-  display: inline;
-  margin: 0 10px;
-}
-
-.social-links a {
-  color: #0077b5;
-  text-decoration: none;
-}
-
-.social-links a:hover {
-  text-decoration: underline;
 }
