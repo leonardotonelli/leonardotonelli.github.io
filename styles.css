@@ -114,6 +114,18 @@ p {
 .job-icon {
   width: 24px; /* Adjust size as needed */
   height: 24px;
+  border-radius: 50%; /* Makes the icon circular */
   vertical-align: middle;
   margin-right: 8px; /* Space between icon and text */
+  border: 2px solid #ddd; /* Optional: add a thin border */
+}
+
+/* Styles for project icons */
+.project-icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px;
+  border-radius: 50%; /* Makes the icon circular */
+  vertical-align: middle;
+  margin-right: 8px; /* Space between icon and text */
+  border: 2px solid #ddd; /* Optional: add a thin border */
 }
