@@ -133,7 +133,7 @@ p {
 
 .separator {
   border: 0; /* Remove default border */
-  height: 1px; /* Set the height */
+  height: 0px; /* Set the height */
   background-color: #ddd; /* Set color */
   margin: 20px 0; /* Margin above and below */
   margin-top: 30px; /* Additional space above the separator */
