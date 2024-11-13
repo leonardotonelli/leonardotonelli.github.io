@@ -17,6 +17,11 @@ body {
   padding: 20px;
 }
 
+@keyframes fadeInSmooth {
+  to {
+    opacity: 1;
+  }
+}
 /* Card styling for zoom effect */
 .card {
   background-color: #f9f9f9;
