@@ -17,7 +17,7 @@ body {
   padding: 20px;
 }
 
-/* Container styling */
+/* Container styling with subtle fade-in on load */
 .container {
   max-width: 900px;
   padding: 30px;
@@ -25,49 +25,27 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transition: box-shadow 0.3s ease;
-  animation: fadeIn 1.5s ease-out; /* Fade-in effect on load */
-}
-
-.container:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  opacity: 0; /* Initially hidden */
+  animation: fadeInSmooth 0.6s ease-out forwards; /* Smooth fade-in */
 }
 
 /* Keyframes for fade-in effect */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+@keyframes fadeInSmooth {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* Header Animation */
-header .intro {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  animation: slideInLeft 1s ease-out;
-}
-
-/* Slide-in effect for the header */
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* Hover effect for container shadow */
+.container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* Text and link styling */
 h1, h2, h3 {
   color: #222;
   font-weight: 600;
+  transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
 h2 {
@@ -138,13 +116,13 @@ header {
   color: #000000bd;
 }
 
+/* Profile styling with hover effect on photo */
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Profile image hover effect */
 .profile-photo {
   width: 150px;
   height: 150px;
@@ -154,12 +132,13 @@ header {
   margin-bottom: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .profile-photo:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Social icons hover effect */
+/* Social icon hover effect */
 .social-links {
   list-style: none;
   padding: 0;
@@ -179,85 +158,37 @@ header {
 }
 
 .social-links img:hover {
-  transform: scale(1.2);
-  opacity: 0.8;
+  transform: scale(1.15);
+  opacity: 0.9;
 }
 
-/* Fade-in for each section */
+/* Simple hover effect on section titles */
+h2:hover, h3:hover {
+  color: #007acc;
+}
+
 section {
   margin: 20px 0;
-  animation: fadeIn 1.5s ease-out;
-  animation-delay: 0.3s;
-  opacity: 0;
 }
 
-.experience {
-  animation-delay: 0.5s;
+ul {
+  list-style-type: none;
+  margin-top: 10px;
 }
 
-.other-news {
-  animation-delay: 0.7s;
+li {
+  margin-bottom: 15px;
 }
 
-.past-experiences {
-  animation-delay: 0.9s;
-}
-
-.projects {
-  animation-delay: 1.1s;
-}
-
-/* Section heading animation */
-section h2,
-section h3 {
-  position: relative;
-  font-size: 1.8em;
-  color: #333;
-  animation: bounceIn 1s ease-out;
-}
-
-@keyframes bounceIn {
-  from {
-    transform: translateY(-15px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* Project and Experience List Item Animation */
-.projects ul li,
-.experience ul li {
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  transform: translateY(10px);
-  opacity: 0;
-}
-
-.projects ul li:hover,
-.experience ul li:hover {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* Separator Animation */
+/* Separator styling */
 .separator {
   border: 0;
-  height: 0px;
+  height: 1px;
   background-color: #ddd;
   margin: 20px 0;
-  margin-top: 30px;
-  opacity: 0;
-  animation: fadeInSeparator 1.5s ease-out forwards;
-  animation-delay: 1.2s;
 }
 
-@keyframes fadeInSeparator {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Job and project icon styling */
+/* Job and project icon styling with subtle hover */
 .job-icon, .project-icon {
   width: 24px;
   height: 24px;
@@ -265,4 +196,9 @@ section h3 {
   vertical-align: middle;
   margin-right: 8px;
   border: 2px solid #ddd;
+  transition: transform 0.3s ease;
+}
+
+.job-icon:hover, .project-icon:hover {
+  transform: scale(1.1);
 }
