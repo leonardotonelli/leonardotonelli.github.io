@@ -202,3 +202,15 @@ li {
 .job-icon:hover, .project-icon:hover {
   transform: scale(1.1);
 }
+
+/* Custom color for hyperlinked titles in h3 tags */
+h3 a {
+  color: #007acc; /* Change to your preferred color */
+  text-decoration: underline; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Color change on hover */
+h3 a:hover {
+  color: #005f99; /* Change to a darker shade for hover */
+}
