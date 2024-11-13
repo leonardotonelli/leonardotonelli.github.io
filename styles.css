@@ -67,7 +67,7 @@ p {
 }
 
 a {
-  color: #007acc;
+  color: #283747;
   text-decoration: none;
 }
 
@@ -164,7 +164,7 @@ header {
 
 /* Simple hover effect on section titles */
 h2:hover, h3:hover {
-  color: #007acc;
+  color: #283747;
 }
 
 section {
