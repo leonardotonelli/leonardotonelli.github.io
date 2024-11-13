@@ -206,7 +206,7 @@ li {
 /* Custom color for hyperlinked titles in h3 tags */
 h3 a {
   color: #354e69; /* Change to your preferred color */
-  text-decoration: underline; /* Remove underline */
+  text-decoration: None; /* Remove underline */
   transition: color 0.3s ease; /* Smooth color transition */
 }
 
