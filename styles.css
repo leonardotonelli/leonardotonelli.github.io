@@ -184,7 +184,7 @@ header {
 
 /* Simple hover effect on section titles */
 h2:hover, h3:hover {
-  color: #9fb6c3;
+  color: #000000;
 }
 
 section {
@@ -232,5 +232,5 @@ h3 a {
 
 /* Color change on hover */
 h3 a:hover {
-  color: #9fb6c3; /* Change to a darker shade for hover */
+  color: #000000; /* Change to a darker shade for hover */
 }
