@@ -3,598 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leonardo Tonelli - Data Scientist & Researcher</title>
+  <title>Leonardo Tonelli | AI and Data Science</title>
   <link rel="icon" href="favicon.png" type="image/x-icon">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #2c3e50;
-      --secondary: #3498db;
-      --accent: #e74c3c;
-      --light: #ecf0f1;
-      --dark: #1a252f;
-      --text: #34495e;
-      --border: #bdc3c7;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--text);
-      background: linear-gradient(135deg, #06313b 0%, #0b5b6f 75%);;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    header {
-      background: white;
-      border-radius: 15px;
-      padding: 40px;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .intro {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .bio h1 {
-      font-size: 2.5em;
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-
-    .bio .subtitle {
-      font-size: 1.3em;
-      color: var(--secondary);
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-
-    .bio p {
-      color: var(--text);
-      font-size: 1.05em;
-      line-height: 1.8;
-    }
-
-    .profile {
-      text-align: center;
-    }
-
-    .profile-photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid var(--secondary);
-      margin-bottom: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .social-links a {
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .social-links a:hover {
-      transform: translateY(-5px);
-    }
-
-    .social-links img {
-      width: 35px;
-      height: 35px;
-      filter: grayscale(30%);
-      transition: filter 0.3s ease;
-    }
-
-    .social-links img:hover {
-      filter: grayscale(0%);
-    }
-
-    section {
-      background: white;
-      border-radius: 15px;
-      padding: 35px;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-
-    h2 {
-      font-size: 2em;
-      color: var(--primary);
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      border-bottom: 3px solid var(--secondary);
-      font-weight: 600;
-    }
-
-    h3 {
-      font-size: 1.4em;
-      color: var(--secondary);
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .education-grid {
-      display: grid;
-      gap: 25px;
-    }
-
-    .education-item {
-      border-left: 4px solid var(--secondary);
-      padding-left: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .education-item:hover {
-      border-left-color: var(--accent);
-      transform: translateX(5px);
-    }
-
-    .education-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    .degree {
-      font-size: 1.2em;
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    .institution {
-      font-size: 1.1em;
-      color: var(--secondary);
-      font-weight: 500;
-    }
-
-    .date {
-      color: #7f8c8d;
-      font-style: italic;
-      white-space: nowrap;
-    }
-
-    .details {
-      margin-top: 10px;
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    .details strong {
-      color: var(--primary);
-    }
-
-    .highlight {
-      background: #e8f4f8;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-weight: 500;
-    }
-
-    .card {
-      background: #f8f9fa;
-      border-radius: 10px;
-      padding: 25px;
-      margin-bottom: 20px;
-      border-left: 4px solid var(--secondary);
-      transition: all 0.3s ease;
-      list-style: none;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      border-left-color: var(--accent);
-    }
-
-    .card h3 {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      font-size: 1.3em;
-    }
-
-    .job-icon, .project-icon {
-      width: 30px;
-      height: 30px;
-      object-fit: contain;
-    }
-
-    .card a {
-      color: var(--secondary);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .card a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .card p {
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .skill-category {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 10px;
-      border-top: 3px solid var(--secondary);
-    }
-
-    .skill-category h4 {
-      color: var(--primary);
-      margin-bottom: 12px;
-      font-size: 1.1em;
-    }
-
-    .skill-category ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .skill-category li {
-      padding: 5px 0;
-      color: var(--text);
-    }
-
-    .skill-category li::before {
-      content: "▹ ";
-      color: var(--secondary);
-      font-weight: bold;
-    }
-
-    .currently-list {
-      list-style: none;
-    }
-
-    .currently-list > li {
-      margin-bottom: 25px;
-    }
-
-    .currently-list h3 {
-      color: var(--secondary);
-      font-size: 1.3em;
-      margin-bottom: 12px;
-    }
-
-    .currently-list ul {
-      list-style: none;
-      padding-left: 20px;
-    }
-
-    .currently-list ul li {
-      padding: 8px 0;
-      border-left: 2px solid var(--border);
-      padding-left: 15px;
-      margin-bottom: 8px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: var(--secondary);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 15px;
-      font-size: 0.85em;
-      margin-right: 8px;
-      margin-top: 5px;
-    }
-
-    @media (max-width: 768px) {
-      .intro {
-        grid-template-columns: 1fr;
-      }
-
-      .education-header {
-        flex-direction: column;
-      }
-
-      .bio h1 {
-        font-size: 2em;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="intro">
-        <div class="bio">
-          <h1>Leonardo Tonelli</h1>
-          <p class="subtitle">MSc Statistics Student</p>
-          <p>I'm a statistics and machine learning student currently pursuing my Master's degree at EPFL in Lausanne. Originally from Avezzano, a small city in central Italy's Abruzzo region, I completed my undergraduate studies at Bocconi University in Milan with highest honors (110/110 Cum Laude).</p>
-          <p style="margin-top: 15px;">My journey spans from theorical machine learning to practical applications in data science. In the future, I would love to be in a position that bridges the gap between academic research and real-world impact, whether in industry or academia.</p>
+  <div class="background-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home">Leonardo Tonelli</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container stack">
+    <section id="home" class="panel hero">
+      <div class="hero-content">
+        <div>
+          <p class="eyebrow">MSc Statistics Student</p>
+          <h1>AI, Data Science, and Applied Statistical Research</h1>
+          <p>
+            I'm a statistics and machine learning student currently pursuing my Master's degree at EPFL in Lausanne.
+            Originally from Avezzano, a small city in central Italy's Abruzzo region, I completed my undergraduate studies
+            at Bocconi University in Milan with highest honors (110/110 Cum Laude).
+          </p>
+          <p>
+            My journey spans from theoretical machine learning to practical applications in data science. In the future,
+            I would love to be in a position that bridges the gap between academic research and real-world impact,
+            whether in industry or academia.
+          </p>
         </div>
-        <div class="profile">
-          <img src="profile.jpg" alt="Leonardo Tonelli" class="profile-photo">
-          <ul class="social-links">
-            <li><a href="https://github.com/leonardotonelli" target="_blank"><img src="github-icon.png" alt="GitHub"></a></li>
-            <li><a href="https://www.linkedin.com/in/leonardo-tonelli-640538237/" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a></li>
+        <div class="profile-block">
+          <img src="profile.jpg" alt="Portrait of Leonardo Tonelli" class="profile-photo">
+          <ul class="social-links" aria-label="Contact links">
+            <li><a href="https://github.com/leonardotonelli" target="_blank" rel="noopener noreferrer"><img src="github-icon.png" alt="GitHub"></a></li>
+            <li><a href="https://www.linkedin.com/in/leonardo-tonelli-640538237/" target="_blank" rel="noopener noreferrer"><img src="linkedin-icon.png" alt="LinkedIn"></a></li>
             <li><a href="mailto:leonardotonelli03@gmail.com"><img src="email-icon.png" alt="Email"></a></li>
-            <li><a href="https://www.instagram.com/leonardaawg/" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a></li>
-            <li><a href="resume.pdf" target="_blank"><img src="resume-icon.png" alt="Resume"></a></li>
+            <li><a href="https://www.instagram.com/leonardaawg/" target="_blank" rel="noopener noreferrer"><img src="instagram-icon.png" alt="Instagram"></a></li>
+            <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer"><img src="resume-icon.png" alt="Resume"></a></li>
           </ul>
         </div>
       </div>
-    </header>
-    <section>
-      <h2>Currently...</h2>
-      <ul class="currently-list">
-        <li>
-          <h3>📚 Studying</h3>
-          <ul>
-            <li><strong>Master's Coursework at EPFL:</strong> Diving deep into Statistical Computation, Statistical Inference, Mathematics of Data, Statistical Machine Learning, Deep Learning, and Deep Reinforcement Learning</li>
-            <li><strong>Focus:</strong> Expanding my statistical knowledge while exploring its intersection with computer science, optimization and data science</li>
-            <li><strong>Extras:</strong> French language at EPFL language center!</li>
-          </ul>
-        </li>
-        <li>
-          <h3>💼 Professional Goals</h3>
-          <ul>
-            <li><strong>Seeking Opportunities:</strong> Looking for Summer 2026 experience in Data Science, Machine Learning, or Data Analytics either in industry or academia. Ready to learn as much as possible from real-world challenges and research investigations.</li>
-            <li><strong>Career Aspiration:</strong> Building toward a career as a researcher or data scientist, either in industry or academia, where I can contribute to impactful projects at the intersection of statistics and machine learning</li>
-          </ul>
-        </li>
-        <li>
-          <h3>🔬 Recent Accomplishments</h3>
-          <ul>
-            <li>Completed Bachelor's degree with <strong>highest honors (110/110 Cum Laude)</strong> at Bocconi University</li>
-            <li>Successfully completed exchange semester at NTU Singapore, amazing experience both personally and academically. </li>
-            <li>Finalized my thesis on Replicated Approach to studying the Binary Perceptron problem.</li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-    <section>
-      <h2>Education</h2>
-      <div class="education-grid">
-        <div class="education-item">
-          <div class="education-header">
-            <div>
-              <div class="degree">MSc in Statistics</div>
-              <div class="institution">EPFL - École Polytechnique Fédérale de Lausanne</div>
-            </div>
-            <div class="date">Sept 2025 - Present</div>
-          </div>
-          <div class="details">
-            <strong>Location:</strong> Lausanne, Switzerland<br>
-            <strong>Expected Coursework:</strong> Statistical Computation, Statistical Inference, Mathematics of Data, Statistical Machine Learning, Deep Learning, Deep Reinforcement Learning<br>
-            <p style="margin-top: 10px;">Advancing my expertise in theoretical and applied statistics, with focus on cutting-edge machine learning methodologies and their mathematical foundations.</p>
-          </div>
-        </div>
 
-        <div class="education-item">
-          <div class="education-header">
-            <div>
-              <div class="degree">BCs in Economics, Management and Computer Science</div>
-              <div class="institution">Bocconi University</div>
-            </div>
-            <div class="date">Sept 2022 - July 2025</div>
-          </div>
-          <div class="details">
-            <strong>Location:</strong> Milan, Italy<br>
-            <strong>Final Mark:</strong> <span class="highlight">110/110 Cum Laude</span><br>
-            <strong>Thesis:</strong> "Navigating Complex Energy Landscapes: Replicated Approach to the Binary Perceptron"<br>
-            <em>Supervised by Prof. Saglietti</em><br>
-            <strong>Scholarship:</strong> National scholarship "Fondo Previdenza Mef" (€2,000) based on academic merit (1st year)<br>
-            <strong>Relevant Coursework:</strong> Advanced Statistics, Econometrics, Applied Mathematics, Machine Learning, Computer Programming, Computer Science, Big Data and Databases, Game Theory, Finance, Microeconomics, Macroeconomics
-          </div>
-        </div>
+      <div class="split-grid">
+        <article class="subpanel">
+          <h2>Currently...</h2>
+          <ul class="detail-list">
+            <li>Completed the first semester of the MSc in Statistics at EPFL and preparing for second-semester coursework.</li>
+            <li>Developing semester projects in deep learning, reinforcement learning, and modern NLP.</li>
+            <li>Building toward research-oriented work at the intersection of statistics and machine learning.</li>
+          </ul>
+        </article>
 
-        <div class="education-item">
-          <div class="education-header">
-            <div>
-              <div class="degree">Exchange Student - Business & Computing Programme</div>
-              <div class="institution">Nanyang Technological University Singapore</div>
-            </div>
-            <div class="date">Jan 2025 - May 2025</div>
-          </div>
-          <div class="details">
-            <strong>Location:</strong> Singapore<br>
-            <strong>Achievement:</strong> <span class="highlight">90th percentile</span> among 1,179 exchange undergraduate applicants<br>
-            <strong>Relevant Coursework:</strong> Business Analytics Consulting, Signal and Noise in Biology, Intelligent Agents<br>
-            <p style="margin-top: 10px;">Gained international exposure and introductory knowledge in intelligent agents, quantitative biology, and business analytics in one of Asia's leading technology hubs.</p>
-          </div>
-        </div>
+        <article class="subpanel">
+          <h2>News</h2>
+          <ul class="detail-list">
+            <li>I have successfully completed my first semester at EPFL.</li>
+            <li>I am officially enrolled in a Minor in Data Science; the minor allows me to take CS courses and complete 30 additional credits.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section>
-      <h2>Professional Experience</h2>
-      <ul>
-        <li class="card">
-          <h3>
-            <img src="job1-icon.png" alt="Research Icon" class="job-icon"> 
-            Research Assistant - <a href="https://www.unibocconi.it/en" target="_blank">Bocconi University</a>
-          </h3>
-          <p><strong>Location:</strong> Milan, Italy | <strong>Period:</strong> Sept 2024 - Dec 2024</p>
-          <p>Conducted statistical analyses on large-scale RCT experimental data combining survey responses and eye tracking measurements. Worked with approximately 1,200 participants generating ~1M raw eye tracking observations.</p>
-          <p><strong>Collaborating Professors:</strong> Maria Cucciniello and Alessandro Romano (Law and Political Sciences Departments)</p>
-          <p><strong>Methods & Tools:</strong> ANOVA, regularization techniques, GLM | Python (pandas, statsmodels, scipy)</p>
-        </li>
-        <li class="card">
-          <h3>
-            <img src="job2-icon.png" alt="AI Developer Icon" class="job-icon"> 
-            AI Solutions Developer / BI Engineer - <a href="https://obloo.vc/" target="_blank">Obloo Ventures</a>
-          </h3>
-          <p><strong>Location:</strong> Milan, Italy | <strong>Period:</strong> Jun - Sept 2024</p>
-          <p>Developed AI-powered application for transcription, summarization, and topic extraction from audio/video files at a Venture Capital and Private Equity firm (€150M AUM).</p>
-          <p><strong>Impact:</strong> Boosted note-taking efficiency by 70% and tripled value extraction from meetings according to analyst feedback.</p>
-          <p><strong>Technical Contributions:</strong> Implemented and tested RAG architecture on NAS system; automated data inflows</p>
-          <p><strong>Tech Stack:</strong> Docker, Streamlit, Groq, Hugging Face, Git</p>
-        </li>
-      </ul>
-    </section>
+    <section id="education" class="panel">
+      <div class="section-head">
+        <p class="eyebrow">Education</p>
+        <h2>Academic Path</h2>
+      </div>
 
-    <section class="projects">
-      <h2>Featured Projects</h2>
-      <ul>
-        <li class="card">
-          <h3>
-            <img src="project0-icon.png" alt="Atari Icon" class="project-icon"> 
-            <a href="https://github.com/leonardotonelli/Atari" target="_blank">Playing Atari with Deep Reinforcement Learning</a>
-          </h3>
-          <p><strong>Role:</strong> Team Leader (3-person team) for Hephaestus AI Bocconi association</p>
-          <p>Coordinated complete replication of DeepMind's landmark 2013 paper by Mnih et al., implementing DQN architecture from scratch. Managed team coordination, implementation strategy, and professional documentation.</p>
-          <p><strong>Skills Acquired:</strong> PyTorch, RL theory, DQN architecture, Gymnasium environment, research leadership, technical writing</p>
-          <span class="badge">Reinforcement Learning</span><span class="badge">Deep Learning</span><span class="badge">Team Leadership</span>
-        </li>
-        <li class="card">
-          <h3>
-            <img src="project1-icon.png" alt="Credit Scoring Icon" class="project-icon"> 
-            <a href="https://github.com/leonardotonelli/CreditScoring" target="_blank">Credit Scoring Model</a>
-          </h3>
-          <p><strong>Role:</strong> Project Lead for Machine Learning course</p>
-          <p>Led comprehensive study comparing ML algorithm variations for predicting credit card default, specifically addressing dataset imbalance challenges. Research grounded in analysis of 10+ academic papers exploring diverse algorithmic approaches.</p>
-          <p><strong>Deliverables:</strong> Final research paper (available on GitHub) and probability prediction submission</p>
-          <p><strong>Skills Acquired:</strong> scikit-learn, research synthesis, data preparation, resampling techniques, weighted models, feature engineering</p>
-          <span class="badge">Machine Learning</span><span class="badge">Imbalanced Data</span><span class="badge">Research</span>
-        </li>
-        <li class="card">
-          <h3>
-            <img src="project2-icon.png" alt="Web App Icon" class="project-icon"> 
-            University Recommendation System - <a href="https://bsibocconi.webnode.page/" target="_blank">BSI Bocconi</a>
-          </h3>
-          <p><strong>Role:</strong> Project Leader (4-person team)</p>
-          <p>Designed and developed web application to help Bocconi undergraduates choose exchange universities. Built comprehensive dataset incorporating ranking, climate, safety, entry scores, and program availability. Developed personalized recommendation algorithm matching student profiles with optimal universities.</p>
-          <p><strong>Impact:</strong> Created sustainable tool for future student cohorts, improving exchange decision-making process</p>
-          <span class="badge">Web Development</span><span class="badge">Recommendation Systems</span><span class="badge">Data Collection</span>
-        </li>
-        <li class="card">
-          <h3>
-            <img src="project3-icon.png" alt="Hackathon Icon" class="project-icon"> 
-            <a href="https://www.hackjunction.com/" target="_blank">Junction Hackathon 2023</a>
-          </h3>
-          <p><strong>Achievement:</strong> Qualified for global event by winning Milan mini-hackathon (Sept 25, 2023)</p>
-          <p>Developed sustainability-focused solution to enhance trust in Large Language Models. Explored RAG architecture and created Python program indexing websites with reliability scores to ensure trustworthy data sources.</p>
-          <p><strong>Focus:</strong> AI ethics, information verification, RAG implementation</p>
-          <span class="badge">RAG Architecture</span><span class="badge">LLM Trust</span><span class="badge">Hackathon Winner</span>
-        </li>
-        <li class="card">
-          <h3>
-            <img src="project1-icon.png" alt="Optimization Icon" class="project-icon"> 
-            <a href="https://github.com/leonardotonelli/SimulatedAnnealing" target="_blank">Discrete Function Optimization</a>
-          </h3>
-          <p>Developed optimization framework for minimizing discrete functions using simulated annealing with MCMC (Metropolis-Hastings) for state transitions. Compared performance with greedy algorithms and enhanced efficiency through stochastic processes.</p>
-          <p><strong>Techniques:</strong> Simulated annealing, MCMC, algorithm comparison, performance optimization</p>
-          <span class="badge">Optimization</span><span class="badge">MCMC</span><span class="badge">Algorithms</span>
-        </li>
-      </ul>
-    </section>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="item-head">
+            <h3>EPFL - Ecole Polytechnique Federale de Lausanne</h3>
+            <p class="meta">Lausanne, Switzerland | Sept 2025 - Present</p>
+          </div>
+          <p>MSc in Statistics. First semester successfully completed, with ongoing specialization in statistical learning and modern AI methods.</p>
+        </article>
 
-    <section>
-      <h2>Skills & Expertise</h2>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h4>Programming Languages</h4>
-          <ul>
-            <li>Python (Intermediate)</li>
-            <li>R (Intermediate)</li>
-            <li>SQL (Intermediate)</li>
-            <li>LaTeX (Intermediate)</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h4>Python Libraries</h4>
-          <ul>
-            <li>Data: Pandas, NumPy, SciPy</li>
-            <li>ML: PyTorch, scikit-learn</li>
-            <li>Stats: statsmodels</li>
-            <li>NLP: Spacy</li>
-            <li>Viz: Seaborn, Matplotlib</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h4>Technical Tools</h4>
-          <ul>
-            <li>Git (Version Control)</li>
-            <li>Docker (Containerization)</li>
-            <li>Streamlit (Web Apps)</li>
-            <li>Groq, Hugging Face (AI/ML)</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h4>Languages</h4>
-          <ul>
-            <li>Italian (Native)</li>
-            <li>English (Advanced - IELTS C1, Band 8)</li>
-            <li>French (Beginner - B1 Course)</li>
-            <li>Spanish (Beginner)</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h4>Statistical Methods</h4>
-          <ul>
-            <li>ANOVA & Regression</li>
-            <li>GLM & Regularization</li>
-            <li>Econometrics</li>
-            <li>Machine Learning</li>
+        <article class="timeline-item">
+          <div class="item-head">
+            <h3>Minor in Data Science</h3>
+          </div>
+          <p>
+            Interdisciplinary track designed to complement the MSc with computer science coursework and an additional 30 ECTS,
+            strengthening technical depth in data-driven modeling and AI systems.
+          </p>
+          <h4>Coursework</h4>
+          <ul class="tag-list">
             <li>Deep Learning</li>
+            <li>Reinforcement Learning</li>
+            <li>Multivariate Statistics</li>
+            <li>Randomisation and Causation</li>
+            <li>Modern Natural Language Processing</li>
+            <li>Applied Statistics</li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section>
-      <h2>University Involvement</h2>
-      <ul>
-        <li class="card">
-          <h3>Hephaestus Applied AI</h3>
-          <p><strong>Role:</strong> Research Project Head | Leading research initiatives in applied artificial intelligence</p>
-        </li>
-        <li class="card">
-          <h3>Bocconi Students for Machine Learning</h3>
-          <p><strong>Role:</strong> Research Member | Contributing to ML research projects and knowledge sharing</p>
-        </li>
-        <li class="card">
-          <h3>BSI Bocconi</h3>
-          <p><strong>Role:</strong> Project Leader | Managing student initiatives and technology projects</p>
-        </li>
-        <li class="card">
-          <h3>AI & Neuroscience Student Association</h3>
-          <p><strong>Role:</strong> Member | Exploring the intersection of AI and neuroscience</p>
-        </li>
-      </ul>
+    <section id="experience" class="panel">
+      <div class="section-head">
+        <p class="eyebrow">Professional Experience</p>
+        <h2>Research and Applied AI Work</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="item-head">
+            <h3>Research Assistant - Bocconi University</h3>
+            <p class="meta">Milan, Italy | Sept 2024 - Dec 2024</p>
+          </div>
+          <ul class="detail-list">
+            <li>Conducted statistical analysis of randomized controlled trial data integrating survey responses and high-frequency eye-tracking measurements (approximately 1 million observations, around 1,200 participants).</li>
+            <li>Applied ANOVA, regularized regression, and generalized linear models to evaluate treatment effects and behavioral response patterns.</li>
+            <li>Preprocessed and structured large-scale behavioral datasets in Python (pandas, statsmodels, scipy), with reproducible and statistically rigorous workflows.</li>
+            <li>Collaborated with faculty in Law and Political Science to translate empirical findings into interpretable, policy-relevant insights.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item">
+          <div class="item-head">
+            <h3>AI Solutions Developer - Obloo Ventures</h3>
+            <p class="meta">Milan, Italy | Jun 2024 - Sept 2024</p>
+          </div>
+          <ul class="detail-list">
+            <li>Developed an NLP pipeline to transcribe, summarize, and extract thematic insights from venture capital meeting audio files.</li>
+            <li>Improved analyst note-taking efficiency by 70% and increased actionable information extraction by 3x.</li>
+            <li>Contributed to implementation and testing of a retrieval-augmented generation architecture deployed on NAS-based infrastructure.</li>
+            <li>Built containerized deployment workflows using Docker and integrated LLM tooling (Groq, Hugging Face, Streamlit) with version control via Git.</li>
+          </ul>
+        </article>
+      </div>
     </section>
-  </div>
+
+    <section id="projects" class="panel">
+      <div class="section-head">
+        <p class="eyebrow">Projects</p>
+        <h2>Completed and Ongoing Work</h2>
+      </div>
+
+      <h3 class="subheading">Completed Projects</h3>
+      <div class="project-grid">
+        <article class="project-card">
+          <h4>CIFAR-10 Optimizer Benchmark - ResNet and Vision Transformer</h4>
+          <p class="meta">EE556 Mathematics of Data, EPFL</p>
+          <ul class="detail-list">
+            <li>Benchmarked Adam, Muon, Scion, and Dion on CIFAR-10 with ResNet-18 and ViT architectures.</li>
+            <li>Designed reproducible PyTorch training pipelines with AMP, training each configuration for 80 epochs.</li>
+            <li>Compared optimizer dynamics through convergence and validation accuracy curves, including early-epoch and final-performance trade-offs.</li>
+            <li>Implemented modular experiment structure with custom optimizer interfaces, logging, and Jupyter-based post-hoc statistical analysis.</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <h4>Statistical Machine Learning Benchmarking Framework</h4>
+          <p class="meta">Statistical Machine Learning, EPFL</p>
+          <ul class="detail-list">
+            <li>Co-developed a unified benchmark for PCA, Isomap, LLE, Laplacian Eigenmaps, t-SNE, UMAP, and autoencoders on synthetic and real datasets.</li>
+            <li>Ran large-scale hyperparameter searches with checkpointing and parallel execution; analyzed mean and variability across settings.</li>
+            <li>Evaluated embeddings with local, global, downstream, and stability metrics, and quantified local-global trade-offs across method families.</li>
+            <li>Studied out-of-sample extension and sensitivity to neighborhood size, perplexity, learning rate, and network depth.</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <h4>Handling Incomplete Data: EM vs. Modern Imputation Methods</h4>
+          <p class="meta">Statistical Computation Course Project</p>
+          <ul class="detail-list">
+            <li>Designed a factorial simulation study comparing EM, MICE (Random Forest), kNN, and baseline imputations under MCAR, MAR, and MNAR.</li>
+            <li>Implemented EM for multivariate normal parameter recovery and semi-supervised Gaussian mixture models from first-principles E/M derivations.</li>
+            <li>Measured estimation accuracy across sample sizes and correlation structures, and analyzed computational scalability across methods.</li>
+            <li>Validated findings on a gastrointestinal lesion dataset with naturally missing labels (approximately 42%), including PCA preprocessing and robustness checks.</li>
+          </ul>
+        </article>
+      </div>
+
+      <h3 class="subheading">Ongoing Projects</h3>
+      <div class="project-grid ongoing">
+        <article class="project-card">
+          <h4>Deep Learning</h4>
+          <p>Temporal hate speech detection in videos.</p>
+        </article>
+        <article class="project-card">
+          <h4>Reinforcement Learning</h4>
+          <p>TBD - project definition in progress.</p>
+        </article>
+        <article class="project-card">
+          <h4>Modern NLP</h4>
+          <p>TBD - project definition in progress.</p>
+        </article>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
