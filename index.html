@@ -3,81 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leonardo Tonelli | AI and Data Science</title>
+  <title>Leonardo Tonelli | Statistical Machine Learning Research</title>
   <link rel="icon" href="favicon.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="background-grid" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="page-glow" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#home">Leonardo Tonelli</a>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#interests">Interests</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#trajectory">Trajectory</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
+        <a href="#writing">Writing</a>
       </nav>
     </div>
   </header>
 
   <main class="container stack">
-    <section id="home" class="panel hero">
-      <div class="hero-content">
-        <div>
-          <p class="eyebrow">MSc Statistics Student</p>
-          <h1>AI, Data Science, and Applied Statistical Research</h1>
-          <p>
-            I'm a statistics and machine learning student currently pursuing my Master's degree at EPFL in Lausanne.
-            Originally from Avezzano, a small city in central Italy's Abruzzo region, I completed my undergraduate studies
-            at Bocconi University in Milan with highest honors (110/110 Cum Laude).
-          </p>
-          <p>
-            My journey spans from theoretical machine learning to practical applications in data science. In the future,
-            I would love to be in a position that bridges the gap between academic research and real-world impact,
-            whether in industry or academia.
-          </p>
-        </div>
-        <div class="profile-block">
-          <img src="profile.jpg" alt="Portrait of Leonardo Tonelli" class="profile-photo">
-          <ul class="social-links" aria-label="Contact links">
-            <li><a href="https://github.com/leonardotonelli" target="_blank" rel="noopener noreferrer"><img src="github-icon.png" alt="GitHub"></a></li>
-            <li><a href="https://www.linkedin.com/in/leonardo-tonelli-640538237/" target="_blank" rel="noopener noreferrer"><img src="linkedin-icon.png" alt="LinkedIn"></a></li>
-            <li><a href="mailto:leonardotonelli03@gmail.com"><img src="email-icon.png" alt="Email"></a></li>
-            <li><a href="https://www.instagram.com/leonardaawg/" target="_blank" rel="noopener noreferrer"><img src="instagram-icon.png" alt="Instagram"></a></li>
-            <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer"><img src="resume-icon.png" alt="Resume"></a></li>
-          </ul>
+    <section id="home" class="hero">
+      <div class="hero-main card">
+        <p class="eyebrow">Machine Learning and Statistical ML</p>
+        <h1>Early-stage researcher building machine learning methods that remain statistically credible when moved from theory to data.</h1>
+        <p class="lead">
+          I work at the intersection of statistical machine learning, causal reasoning, reinforcement learning, and applied modeling.
+          My focus is experimental discipline: designing studies that produce interpretable evidence, not only strong implementation.
+        </p>
+        <div class="cta-row" aria-label="Primary links">
+          <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          <a class="btn" href="https://github.com/leonardotonelli" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn" href="mailto:leonardotonelli03@gmail.com">Contact</a>
         </div>
       </div>
 
-      <div class="split-grid">
-        <article class="subpanel">
-          <h2>Currently...</h2>
-          <ul class="detail-list">
-            <li>Completed the first semester of the MSc in Statistics at EPFL and preparing for second-semester coursework.</li>
-            <li>Developing semester projects in deep learning, reinforcement learning, and modern NLP.</li>
-            <li>Building toward research-oriented work at the intersection of statistics and machine learning.</li>
-          </ul>
-        </article>
+      <aside class="hero-side card">
+        <img src="profile.jpg" alt="Portrait of Leonardo Tonelli" class="profile-photo">
+        <p class="meta-tight">MSc in Statistics and Machine Learning, EPFL</p>
+        <p class="meta-tight">BSc in Economics and Management for Arts, Culture and Communication, Bocconi (110/110 Cum Laude)</p>
+        <div class="social-links" aria-label="Social and profile links">
+          <a href="https://github.com/leonardotonelli" target="_blank" rel="noopener noreferrer"><img src="github-icon.png" alt="GitHub"></a>
+          <a href="https://www.linkedin.com/in/leonardo-tonelli-640538237/" target="_blank" rel="noopener noreferrer"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+          <a href="mailto:leonardotonelli03@gmail.com"><img src="email-icon.png" alt="Email"></a>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer"><img src="resume-icon.png" alt="Resume"></a>
+        </div>
+        <div class="micro-plot" aria-label="Research signal visualization">
+          <svg viewBox="0 0 300 120" role="img" aria-label="Experimental rigor vs deployment relevance">
+            <line x1="24" y1="98" x2="276" y2="98"></line>
+            <line x1="24" y1="98" x2="24" y2="16"></line>
+            <polyline points="24,84 72,70 120,58 168,49 216,37 264,28"></polyline>
+            <circle cx="264" cy="28" r="4"></circle>
+          </svg>
+          <p>Experimental rigor and applied relevance as joint constraints.</p>
+        </div>
+      </aside>
+    </section>
 
-        <article class="subpanel">
-          <h2>News</h2>
-          <ul class="detail-list">
-            <li>I have successfully completed my first semester at EPFL.</li>
-            <li>I am officially enrolled in a Minor in Data Science; the minor allows me to take CS courses and complete 30 additional credits.</li>
-          </ul>
+    <section id="about" class="card section">
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2>Academic Narrative</h2>
+      </div>
+      <div class="prose">
+        <p>
+          I am an Italian researcher in training from Avezzano, currently based in Lausanne for the MSc in Statistics at EPFL.
+          My undergraduate years at Bocconi gave me a strong quantitative base and a habit of framing technical work around real decision problems.
+        </p>
+        <p>
+          My trajectory has been theory first, then application with increasing methodological control: from statistical learning foundations and optimization,
+          to causal and behavioral data analysis, to reinforcement learning and modern ML experimentation.
+        </p>
+        <p>
+          The questions I care about are practical but methodological: when can we trust model-based conclusions, how do we separate prediction from mechanism,
+          and how should we design ML experiments so that results remain interpretable outside a benchmark setting?
+        </p>
+      </div>
+    </section>
+
+    <section id="interests" class="card section">
+      <div class="section-head">
+        <p class="eyebrow">Research Interests</p>
+        <h2>Current Focus Areas</h2>
+      </div>
+      <div class="interest-grid">
+        <article class="interest-item">
+          <h3>Statistical Machine Learning</h3>
+          <p>Generalization, optimization behavior, and uncertainty-aware evaluation for modern ML models.</p>
+        </article>
+        <article class="interest-item">
+          <h3>Causal Inference and Causal ML</h3>
+          <p>From treatment-effect estimation to causally informed predictive modeling under observational constraints.</p>
+        </article>
+        <article class="interest-item">
+          <h3>Reinforcement Learning</h3>
+          <p>Stability and credit assignment in value-based methods, with attention to reproducibility and diagnostics.</p>
+        </article>
+        <article class="interest-item">
+          <h3>Applied Machine Learning</h3>
+          <p>Translating rigorous modeling into usable systems in domains with noisy, imbalanced, or partially observed data.</p>
         </article>
       </div>
     </section>
 
-    <section id="education" class="panel">
+    <section id="case-studies" class="card section">
+      <div class="section-head">
+        <p class="eyebrow">Research Case Studies</p>
+        <h2>Selected Work</h2>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card">
+          <h3>Deep Q-Network Reproduction on Atari</h3>
+          <p class="summary">Reproduced the original DQN training logic on Demon Attack to study learning stability under limited compute.</p>
+          <p><span class="label">Problem.</span> Can value-based deep RL recover coherent behavior when strict computational limits force short training horizons?</p>
+          <p><span class="label">Method.</span> Implemented a CNN DQN in PyTorch and Gymnasium with experience replay, target networks, reward clipping, and epsilon-greedy exploration, following Mnih et al.</p>
+          <p><span class="label">Result.</span> Over 1,000 episodes (about 3 hours), reward and Q-value trajectories were noisy but increased, and frame-level high/low Q inspection confirmed non-random policy structure.</p>
+          <p><span class="label">Why it matters.</span> Established a reproducible RL pipeline and highlighted which stability components are most sensitive when resources are constrained.</p>
+        </article>
+
+        <article class="case-card">
+          <h3>Binary Perceptron Thesis: Entropy-Biased Search in NP-Hard Landscapes</h3>
+          <p class="summary">Replicated and extended entropy-based algorithms for the binary perceptron using tools from statistical mechanics.</p>
+          <p><span class="label">Problem.</span> How can learning dynamics be steered toward dense solution regions in an NP-hard constraint satisfaction setting?</p>
+          <p><span class="label">Method.</span> Derived and implemented Replicated Simulated Annealing and Replicated Gradient Descent from large-deviation formulations with interacting replica Hamiltonians.</p>
+          <p><span class="label">Result.</span> Across problem sizes above 500 and constraint densities up to 0.5, replicated methods consistently improved convergence over non-interacting baselines and clarified phase-transition behavior.</p>
+          <p><span class="label">Why it matters.</span> This work connects abstract theory to algorithmic design and motivates future study of geometry-aware optimization in difficult learning landscapes.</p>
+        </article>
+
+        <article class="case-card">
+          <h3>Credit Scoring Under Severe Class Imbalance</h3>
+          <p class="summary">Built and compared imbalance-aware classifiers for default prediction where positive events were only 6.7% of the data.</p>
+          <p><span class="label">Problem.</span> How do we optimize risk detection when standard classifiers are biased toward the majority class?</p>
+          <p><span class="label">Method.</span> Combined feature engineering, resampling, cost-sensitive splits, and ensemble methods (Balanced RF, Easy Ensemble, Balanced Bagging, boosted trees with random undersampling).</p>
+          <p><span class="label">Result.</span> Improved ROC-AUC from 0.8077 (logistic baseline) to 0.8582 with boosted trees plus undersampling, while maintaining stronger recall behavior on defaults.</p>
+          <p><span class="label">Why it matters.</span> Shows how statistical design choices in evaluation and sampling can materially change decisions in high-cost prediction settings.</p>
+        </article>
+
+        <article class="case-card">
+          <h3>Optimizer Benchmarking: ResNet and Vision Transformer</h3>
+          <p class="summary">Compared Adam, Muon, Scion, and Dion on CIFAR-10 with a controlled mixed-precision experimental pipeline.</p>
+          <p><span class="label">Problem.</span> Which optimizer behaviors matter most across architecture classes: early convergence speed, stability, or final generalization?</p>
+          <p><span class="label">Method.</span> Trained each optimizer-architecture pair for 80 epochs in PyTorch with AMP and standardized logging, then analyzed loss and validation trajectories.</p>
+          <p><span class="label">Result.</span> Scion showed faster early convergence on ResNet with competitive final accuracy; Muon exposed a conditioning-versus-update-cost trade-off.</p>
+          <p><span class="label">Why it matters.</span> Reinforces that optimizer choice should be interpreted through architecture and compute budget, not aggregate leaderboard performance.</p>
+        </article>
+
+        <article class="case-card">
+          <h3>Dimensionality Reduction Benchmarking Framework</h3>
+          <p class="summary">Developed a unified framework to compare manifold and representation methods across synthetic and real datasets.</p>
+          <p><span class="label">Problem.</span> How should we evaluate low-dimensional embeddings when local fidelity, global geometry, and downstream utility often conflict?</p>
+          <p><span class="label">Method.</span> Benchmarked PCA, Isomap, LLE, Laplacian Eigenmaps, t-SNE, UMAP, and autoencoders using Averaged Jaccard, random triplet accuracy, k-NN accuracy, ARI, and Procrustes StabAUC.</p>
+          <p><span class="label">Result.</span> Quantified the local-global trade-off (for example, stronger local structure for t-SNE and UMAP, stronger global ordering for PCA and Isomap) and documented large robustness differences across hyperparameter regimes.</p>
+          <p><span class="label">Why it matters.</span> Provides an evidence-oriented template for selecting embedding methods based on objective and stability requirements, not visual appeal alone.</p>
+        </article>
+
+        <article class="case-card">
+          <h3>Expectation-Maximization vs Modern Imputation</h3>
+          <p class="summary">Compared EM, MICE, kNN, and simple baselines under controlled missingness mechanisms and real incomplete clinical data.</p>
+          <p><span class="label">Problem.</span> When does classical likelihood-based imputation remain preferable to modern flexible alternatives?</p>
+          <p><span class="label">Method.</span> Ran factorial simulations under MCAR, MAR, and MNAR; implemented EM for multivariate normal recovery and semi-supervised Gaussian mixtures from first principles.</p>
+          <p><span class="label">Result.</span> EM showed expected strength under MAR, while MNAR produced a non-zero asymptotic bias floor; runtime analysis clarified scalability trade-offs versus kNN and MICE.</p>
+          <p><span class="label">Why it matters.</span> Connects theoretical assumptions directly to empirical failure modes, improving method choice in incomplete-data workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="trajectory" class="card section">
+      <div class="section-head">
+        <p class="eyebrow">Research and Work in Progress</p>
+        <h2>Trajectory</h2>
+      </div>
+      <div class="prose">
+        <p>
+          My current trajectory is centered on statistical machine learning, causal ML, and reinforcement learning,
+          with an emphasis on the boundary between theory and deployment constraints.
+        </p>
+        <p>
+          Through thesis-oriented work and replication-heavy projects, I am building a portfolio around three recurring themes:
+          robustness under limited resources, interpretability of optimization behavior, and evidence-driven model comparison.
+        </p>
+        <p>
+          In the near term, I aim to develop deeper work on causal structure in predictive pipelines and stability diagnostics in RL,
+          while continuing to contribute to applied projects where statistical assumptions can be tested in practice.
+        </p>
+      </div>
+    </section>
+
+    <section id="education" class="card section">
       <div class="section-head">
         <p class="eyebrow">Education</p>
-        <h2>Academic Path</h2>
+        <h2>Academic Formation</h2>
       </div>
 
       <div class="timeline">
@@ -86,23 +210,23 @@
             <h3>EPFL - Ecole Polytechnique Federale de Lausanne</h3>
             <p class="meta">Lausanne, Switzerland | Sept 2025 - Present</p>
           </div>
-          <p>MSc in Statistics. First semester successfully completed, with ongoing specialization in statistical learning and modern AI methods.</p>
+          <p>MSc in Statistics and Machine Learning, with coursework and projects spanning deep learning, reinforcement learning, causal inference, and applied statistics.</p>
         </article>
 
         <article class="timeline-item">
           <div class="item-head">
-            <h3>Minor in Data Science</h3>
+            <h3>Bocconi University</h3>
+            <p class="meta">Milan, Italy | BSc completed with 110/110 Cum Laude</p>
           </div>
           <p>
-            Interdisciplinary track designed to complement the MSc with computer science coursework and an additional 30 ECTS,
-            strengthening technical depth in data-driven modeling and AI systems.
+            Quantitative training that shaped my interest in rigorous empirical work and created the foundation for graduate study in statistical machine learning.
           </p>
-          <h4>Coursework</h4>
+          <h4>Selected Topics</h4>
           <ul class="tag-list">
             <li>Deep Learning</li>
             <li>Reinforcement Learning</li>
             <li>Multivariate Statistics</li>
-            <li>Randomisation and Causation</li>
+            <li>Randomization and Causation</li>
             <li>Modern Natural Language Processing</li>
             <li>Applied Statistics</li>
           </ul>
@@ -110,10 +234,10 @@
       </div>
     </section>
 
-    <section id="experience" class="panel">
+    <section id="experience" class="card section">
       <div class="section-head">
-        <p class="eyebrow">Professional Experience</p>
-        <h2>Research and Applied AI Work</h2>
+        <p class="eyebrow">Experience</p>
+        <h2>Research and Applied Work</h2>
       </div>
 
       <div class="timeline">
@@ -123,10 +247,10 @@
             <p class="meta">Milan, Italy | Sept 2024 - Dec 2024</p>
           </div>
           <ul class="detail-list">
-            <li>Conducted statistical analysis of randomized controlled trial data integrating survey responses and high-frequency eye-tracking measurements (approximately 1 million observations, around 1,200 participants).</li>
-            <li>Applied ANOVA, regularized regression, and generalized linear models to evaluate treatment effects and behavioral response patterns.</li>
-            <li>Preprocessed and structured large-scale behavioral datasets in Python (pandas, statsmodels, scipy), with reproducible and statistically rigorous workflows.</li>
-            <li>Collaborated with faculty in Law and Political Science to translate empirical findings into interpretable, policy-relevant insights.</li>
+            <li>Worked on randomized controlled trial data combining surveys and high-frequency eye-tracking streams, with substantial effort in data curation and consistency checks.</li>
+            <li>Supported model-based analysis with GLMs and related regression tools, focusing on interpretable treatment-effect patterns in behavioral outcomes.</li>
+            <li>Contributed to repository organization and reproducible Python workflows, coordinating with faculty and a PhD researcher on iterative empirical checks.</li>
+            <li>Role emphasized analytical reliability and communication of quantitative findings, beyond pure implementation speed.</li>
           </ul>
         </article>
 
@@ -136,71 +260,45 @@
             <p class="meta">Milan, Italy | Jun 2024 - Sept 2024</p>
           </div>
           <ul class="detail-list">
-            <li>Developed an NLP pipeline to transcribe, summarize, and extract thematic insights from venture capital meeting audio files.</li>
-            <li>Improved analyst note-taking efficiency by 70% and increased actionable information extraction by 3x.</li>
-            <li>Contributed to implementation and testing of a retrieval-augmented generation architecture deployed on NAS-based infrastructure.</li>
-            <li>Built containerized deployment workflows using Docker and integrated LLM tooling (Groq, Hugging Face, Streamlit) with version control via Git.</li>
+            <li>Developed an NLP pipeline for transcription, summarization, and retrieval over venture meeting audio with strict resource constraints and no paid API dependency.</li>
+            <li>Evaluated system quality directly on real call recordings and iterated on retrieval and generation behavior based on analyst feedback loops.</li>
+            <li>Built practical tooling that reduced manual review time and improved how quickly teams could identify risks and discussion bottlenecks in startup due diligence.</li>
+            <li>Experience reinforced my interest in applied ML systems that balance model quality, reproducibility, and computational limits.</li>
           </ul>
         </article>
       </div>
     </section>
 
-    <section id="projects" class="panel">
+    <section id="writing" class="card section">
       <div class="section-head">
-        <p class="eyebrow">Projects</p>
-        <h2>Completed and Ongoing Work</h2>
+        <p class="eyebrow">Writing and Notes</p>
+        <h2>In Preparation</h2>
       </div>
-
-      <h3 class="subheading">Completed Projects</h3>
-      <div class="project-grid">
-        <article class="project-card">
-          <h4>CIFAR-10 Optimizer Benchmark - ResNet and Vision Transformer</h4>
-          <p class="meta">EE556 Mathematics of Data, EPFL</p>
-          <ul class="detail-list">
-            <li>Benchmarked Adam, Muon, Scion, and Dion on CIFAR-10 with ResNet-18 and ViT architectures.</li>
-            <li>Designed reproducible PyTorch training pipelines with AMP, training each configuration for 80 epochs.</li>
-            <li>Compared optimizer dynamics through convergence and validation accuracy curves, including early-epoch and final-performance trade-offs.</li>
-            <li>Implemented modular experiment structure with custom optimizer interfaces, logging, and Jupyter-based post-hoc statistical analysis.</li>
-          </ul>
+      <div class="writing-grid">
+        <article class="writing-item">
+          <h3>Research Notes</h3>
+          <p>To be defined.</p>
         </article>
-
-        <article class="project-card">
-          <h4>Statistical Machine Learning Benchmarking Framework</h4>
-          <p class="meta">Statistical Machine Learning, EPFL</p>
-          <ul class="detail-list">
-            <li>Co-developed a unified benchmark for PCA, Isomap, LLE, Laplacian Eigenmaps, t-SNE, UMAP, and autoencoders on synthetic and real datasets.</li>
-            <li>Ran large-scale hyperparameter searches with checkpointing and parallel execution; analyzed mean and variability across settings.</li>
-            <li>Evaluated embeddings with local, global, downstream, and stability metrics, and quantified local-global trade-offs across method families.</li>
-            <li>Studied out-of-sample extension and sensitivity to neighborhood size, perplexity, learning rate, and network depth.</li>
-          </ul>
+        <article class="writing-item">
+          <h3>Paper Summaries</h3>
+          <p>To be defined.</p>
         </article>
-
-        <article class="project-card">
-          <h4>Handling Incomplete Data: EM vs. Modern Imputation Methods</h4>
-          <p class="meta">Statistical Computation Course Project</p>
-          <ul class="detail-list">
-            <li>Designed a factorial simulation study comparing EM, MICE (Random Forest), kNN, and baseline imputations under MCAR, MAR, and MNAR.</li>
-            <li>Implemented EM for multivariate normal parameter recovery and semi-supervised Gaussian mixture models from first-principles E/M derivations.</li>
-            <li>Measured estimation accuracy across sample sizes and correlation structures, and analyzed computational scalability across methods.</li>
-            <li>Validated findings on a gastrointestinal lesion dataset with naturally missing labels (approximately 42%), including PCA preprocessing and robustness checks.</li>
-          </ul>
+        <article class="writing-item">
+          <h3>Technical Posts</h3>
+          <p>To be defined.</p>
         </article>
       </div>
+    </section>
 
-      <h3 class="subheading">Ongoing Projects</h3>
-      <div class="project-grid ongoing">
-        <article class="project-card">
-          <h4>Deep Learning</h4>
-          <p>Temporal hate speech detection in videos.</p>
-        </article>
-        <article class="project-card">
-          <h4>Reinforcement Learning</h4>
-          <p>TBD - project definition in progress.</p>
-        </article>
-        <article class="project-card">
-          <h4>Modern NLP</h4>
-          <p>TBD - project definition in progress.</p>
-        </article>
+    <section class="card section cta-footer" aria-label="Final call to action">
+      <h2>Open to PhD and Research-Oriented ML Roles</h2>
+      <p>
+        I am looking for environments where methodological rigor and applied impact are both treated as first-class goals.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        <a class="btn" href="https://github.com/leonardotonelli" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn" href="mailto:leonardotonelli03@gmail.com">Contact</a>
       </div>
     </section>
   </main>
