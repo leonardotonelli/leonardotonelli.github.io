@@ -73,6 +73,10 @@ html.theme-transition *::after {
   position: relative;
   isolation: isolate;
   background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 8% 8%, color-mix(in srgb, var(--color-accent) 4%, transparent), transparent 34%),
+    radial-gradient(circle at 92% 88%, color-mix(in srgb, var(--color-accent) 3%, transparent), transparent 32%);
+  background-attachment: fixed;
 }
 
 .site-shell::before {
@@ -81,11 +85,10 @@ html.theme-transition *::after {
   inset: -36px;
   z-index: 0;
   pointer-events: none;
-  background:
-    radial-gradient(circle, color-mix(in srgb, var(--color-accent) 18%, transparent) 0.85px, transparent 1.05px) 0 0 / 32px 32px,
-    radial-gradient(circle at 14% 10%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 33%),
-    radial-gradient(circle at 86% 82%, color-mix(in srgb, var(--color-accent) 7%, transparent), transparent 31%);
-  opacity: 0.44;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 18%, transparent) 0.85px, transparent 1.05px) 0 0 / 32px 32px;
+  opacity: 0.42;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 8%, transparent 18%, transparent 82%, #000 92%, #000 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 8%, transparent 18%, transparent 82%, #000 92%, #000 100%);
   animation: ambient-drift 30s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -159,6 +162,14 @@ html.theme-transition *::after {
 
   .site-shell::before {
     animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-shell::before {
+    opacity: 0.18;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 
