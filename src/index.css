@@ -59,14 +59,6 @@ html.theme-transition *::after {
   html {
     scroll-behavior: auto;
   }
-
-  .project-card,
-  .social-link,
-  .research-interest,
-  .research-mark,
-  .brand-mark {
-    transition: none;
-  }
 }
 
 .glass {
@@ -77,13 +69,43 @@ html.theme-transition *::after {
   max-width: 800px;
 }
 
-.project-placeholder {
-  background:
-    radial-gradient(circle at 75% 25%, color-mix(in srgb, var(--color-accent) 11%, transparent), transparent 45%),
-    color-mix(in srgb, var(--color-border) 18%, var(--color-bg));
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-bg);
 }
 
-.project-card,
+.site-shell::before {
+  content: "";
+  position: fixed;
+  inset: -36px;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--color-accent) 18%, transparent) 0.85px, transparent 1.05px) 0 0 / 32px 32px,
+    radial-gradient(circle at 14% 10%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 33%),
+    radial-gradient(circle at 86% 82%, color-mix(in srgb, var(--color-accent) 7%, transparent), transparent 31%);
+  opacity: 0.44;
+  animation: ambient-drift 30s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.site-shell > main,
+.site-shell > footer {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(12px, -8px, 0);
+  }
+}
+
 .social-link,
 .research-interest,
 .brand-mark {
@@ -94,10 +116,6 @@ html.theme-transition *::after {
 .brand-mark {
   opacity: 0.7;
   transition-property: opacity;
-}
-
-.project-card {
-  transition-property: transform, border-color, background-color;
 }
 
 .social-link {
@@ -114,13 +132,8 @@ html.theme-transition *::after {
 }
 
 @media (hover: hover) {
-  .project-card:hover,
   .research-interest:hover {
     transform: translateY(-2px);
-  }
-
-  .project-card:hover {
-    border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
   }
 
   .social-link:hover {
@@ -133,6 +146,19 @@ html.theme-transition *::after {
 
   .brand-link:hover .brand-mark {
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-link,
+  .research-interest,
+  .research-mark,
+  .brand-mark {
+    transition: none;
+  }
+
+  .site-shell::before {
+    animation: none;
   }
 }
 

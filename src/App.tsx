@@ -453,7 +453,7 @@ const AppContent = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-bg selection:bg-accent/20 overflow-x-clip">
+    <div className="site-shell min-h-screen flex flex-col selection:bg-accent/20 overflow-x-clip">
       {/* Navigation */}
       <nav className="shrink-0 glass border-b border-border/40 sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
