@@ -1,12 +1,18 @@
 # leonardotonelli.github.io
 
-A build-tool-free, multi-page personal website hosted on GitHub Pages. Its structure is based on the [al-folio](https://github.com/alshedivat/al-folio) academic website template.
+Personal academic portfolio built with React, Vite, Tailwind CSS, and Motion.
 
-## Pages
+The implementation is based on [`leonardotonelli/website-test`](https://github.com/leonardotonelli/website-test).
 
-- `index.html` — short biography and current work
-- `projects.html` — selected projects
-- `cv.html` — education, experience, and skills
-- `contact.html` — contact links
+## Development
 
-Open `index.html` directly or serve the directory with any static file server.
+```bash
+npm install
+npm run dev
+```
+
+## Production build
+
+```bash
+npm run build
+```
