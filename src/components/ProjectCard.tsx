@@ -86,7 +86,7 @@ export function ProjectCard({
           )}
 
           {highlights && (
-            <ul className="space-y-2 mb-6">
+            <ul className="space-y-2 mb-4">
               {highlights.map((highlight, i) => (
                 <li key={i} className="text-sm text-ink/80 flex gap-3">
                   <span className="text-accent mt-1.5 shrink-0 w-1 h-1 rounded-full bg-accent/40" />
@@ -96,32 +96,34 @@ export function ProjectCard({
             </ul>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-sm">
-            {problem && (
-              <div>
-                <span className="block font-semibold uppercase tracking-wider text-[10px] text-muted mb-1">Problem</span>
-                <p className="text-ink/90">{problem}</p>
-              </div>
-            )}
-            {method && (
-              <div>
-                <span className="block font-semibold uppercase tracking-wider text-[10px] text-muted mb-1">Method</span>
-                <p className="text-ink/90">{method}</p>
-              </div>
-            )}
-            {result && (
-              <div>
-                <span className="block font-semibold uppercase tracking-wider text-[10px] text-muted mb-1">Result</span>
-                <p className="text-ink/90">{result}</p>
-              </div>
-            )}
-            {insight && (
-              <div>
-                <span className="block font-semibold uppercase tracking-wider text-[10px] text-muted mb-1">Insight</span>
-                <p className="text-ink/90">{insight}</p>
-              </div>
-            )}
-          </div>
+          {(problem || method || result || insight) && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-sm">
+              {problem && (
+                <div>
+                  <span className="block font-semibold uppercase tracking-wider text-[10px] text-muted mb-1">Problem</span>
+                  <p className="text-ink/90">{problem}</p>
+                </div>
+              )}
+              {method && (
+                <div>
+                  <span className="block font-semibold uppercase tracking-wider text-[10px] text-muted mb-1">Method</span>
+                  <p className="text-ink/90">{method}</p>
+                </div>
+              )}
+              {result && (
+                <div>
+                  <span className="block font-semibold uppercase tracking-wider text-[10px] text-muted mb-1">Result</span>
+                  <p className="text-ink/90">{result}</p>
+                </div>
+              )}
+              {insight && (
+                <div>
+                  <span className="block font-semibold uppercase tracking-wider text-[10px] text-muted mb-1">Insight</span>
+                  <p className="text-ink/90">{insight}</p>
+                </div>
+              )}
+            </div>
+          )}
 
           {takeaway && (
             <div className="bg-accent/5 border-l-2 border-accent/30 p-3 mb-6">
