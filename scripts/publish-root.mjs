@@ -1,5 +1,6 @@
-import { copyFile, mkdir, readdir } from "node:fs/promises";
+import { copyFile, mkdir, readdir, rm } from "node:fs/promises";
 
+await rm("assets", { recursive: true, force: true });
 await mkdir("assets", { recursive: true });
 
 for (const file of await readdir("dist/assets")) {
