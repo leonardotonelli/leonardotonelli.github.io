@@ -94,14 +94,14 @@ html.theme-transition *::after {
 }
 
 html:not(.dark) .site-shell::before {
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 38%, transparent) 0.85px, transparent 1.05px) 0 0 / 32px 32px;
-  opacity: 0.72;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 44%, transparent) 0.85px, transparent 1.05px) 0 0 / 32px 32px;
+  opacity: 0.8;
 }
 
 html:not(.dark) .site-shell > nav,
 html:not(.dark) .site-shell > footer {
-  background-color: color-mix(in srgb, var(--color-border) 22%, var(--color-bg));
-  border-color: color-mix(in srgb, var(--color-border) 85%, transparent);
+  background-color: color-mix(in srgb, var(--color-border) 30%, var(--color-bg));
+  border-color: var(--color-border);
 }
 
 .site-shell > main,
@@ -184,7 +184,7 @@ html:not(.dark) .site-shell > footer {
   }
 
   html:not(.dark) .site-shell::before {
-    opacity: 0.44;
+    opacity: 0.52;
   }
 }
 
