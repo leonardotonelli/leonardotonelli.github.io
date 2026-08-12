@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <PageWrapper>
       <Section>
-        <div className="pt-4 pb-12">
+        <div className="pt-4">
           <div>
             {/* Bio & Info */}
             <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
@@ -93,7 +93,10 @@ const Home = () => {
                   />
                 </button>
 
-                <p className="text-xs text-muted leading-relaxed mb-8 font-serif w-full text-left">
+                <p className={cn(
+                  "text-xs text-muted leading-relaxed font-serif w-full text-left",
+                  isSummariesOpen && "mb-8"
+                )}>
                   A small collection of papers I have read and summarized in my own words. Writing the summaries helps me check what I understood. There may be mistakes; I am still learning.
                 </p>
 
@@ -439,7 +442,10 @@ const AppContent = () => {
       </nav>
 
       <main className="flex-1">
-        <div className="max-w-5xl mx-auto px-6 pt-8 pb-16">
+        <div className={cn(
+          "max-w-5xl mx-auto px-6 pt-8",
+          location.pathname === "/" ? "pb-4" : "pb-16"
+        )}>
           <AnimatePresence mode="wait">
             <motion.div key={location.pathname}>
               <Routes location={location}>
