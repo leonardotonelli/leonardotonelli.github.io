@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, MotionConfig } from "motion/react";
-import { Github, Linkedin, Mail, FileText, Layers3, ChartNoAxesCombined, GitBranch, Search, ChevronDown, Menu, X, Moon, Sun } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, Layers3, ChartNoAxesCombined, GitBranch, Network, ChevronDown, Menu, X, Moon, Sun } from "lucide-react";
 import { Section } from "./components/Section";
 import { ProjectCard } from "./components/ProjectCard";
 import { ExperienceItem } from "./components/ExperienceItem";
@@ -136,44 +136,47 @@ const Home = () => {
 const Research = () => (
   <PageWrapper>
     <Section title="Research Interests">
+      <div className="prose prose-ink max-w-none mb-14">
+        <p>
+          My research interests broadly lie in statistical machine learning and representation learning. I am particularly interested in methods for learning useful and reliable representations from complex, high-dimensional, or structured data.
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 mb-16">
-        <div className="flex gap-4">
-          <div className="mt-1 text-accent"><Layers3 size={20} /></div>
-          <div>
-            <h4 className="font-medium text-lg mb-1">Representation Learning</h4>
-            <p className="text-sm text-muted">World models, joint-embedding methods, and useful invariances under uncertainty.</p>
-          </div>
-        </div>
         <div className="flex gap-4">
           <div className="mt-1 text-accent"><ChartNoAxesCombined size={20} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Statistical Machine Learning</h4>
-            <p className="text-sm text-muted">Inference, optimization, and evaluation in high-dimensional learning problems.</p>
+            <p className="text-sm text-muted">Uncertainty quantification, robustness, and generalization in modern learning systems.</p>
+          </div>
+        </div>
+        <div className="flex gap-4">
+          <div className="mt-1 text-accent"><Layers3 size={20} /></div>
+          <div>
+            <h4 className="font-medium text-lg mb-1">Representation Learning</h4>
+            <p className="text-sm text-muted">Learning useful and reliable representations from high-dimensional and structured data.</p>
+          </div>
+        </div>
+        <div className="flex gap-4">
+          <div className="mt-1 text-accent"><Network size={20} /></div>
+          <div>
+            <h4 className="font-medium text-lg mb-1">Graph & Geometric Learning</h4>
+            <p className="text-sm text-muted">GNNs and relational methods for healthcare, biology, engineering, and social systems.</p>
           </div>
         </div>
         <div className="flex gap-4">
           <div className="mt-1 text-accent"><GitBranch size={20} /></div>
           <div>
-            <h4 className="font-medium text-lg mb-1">Causal Learning & RL</h4>
-            <p className="text-sm text-muted">Interventions, reward identifiability, and learning across related environments.</p>
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <div className="mt-1 text-accent"><Search size={20} /></div>
-          <div>
-            <h4 className="font-medium text-lg mb-1">Interpretability</h4>
-            <p className="text-sm text-muted">Understanding learned representations and comparing circuits across models.</p>
+            <h4 className="font-medium text-lg mb-1">Causal & Sequential Learning</h4>
+            <p className="text-sm text-muted">Causal machine learning and sequential decision-making when they connect to these problems.</p>
           </div>
         </div>
       </div>
 
       <div className="prose prose-ink max-w-none">
-        <h3 className="text-xl font-medium mb-4">Current work</h3>
-        <p className="mb-6">
-          At OIST, I am evaluating a ViT-based, action-conditioned JEPA world model on CIFAR-10, dSprites, and MPI3D. I use controlled interventions, compositional splits, retrieval metrics, and frozen linear probes to study which parts of a state the model keeps or ignores.
-        </p>
+        <h3 className="text-xl font-medium mb-4">Research direction</h3>
         <p>
-          Other recent work has covered frame-level multimodal hate localization, cross-model circuit alignment in language models, and reward identifiability in inverse reinforcement learning.
+          I am most attracted to methodological research that is theoretically or statistically grounded while motivated by meaningful real-world applications. I am interested in combining modern deep learning with statistical ideas, and in understanding both how these methods work and how they can be applied effectively.
         </p>
       </div>
     </Section>
