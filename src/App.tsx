@@ -179,7 +179,7 @@ const Research = () => (
 const Projects = () => (
   <PageWrapper>
     <Section title="Projects">
-      <MacroAreaAccordion title="Deep Learning & NLP" defaultOpen>
+      <MacroAreaAccordion title="Deep Learning & NLP">
         <ProjectCard
           title="Frame-Level Multimodal Hate Localization"
           role="Deep Learning – EPFL"
