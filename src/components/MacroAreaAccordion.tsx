@@ -59,7 +59,7 @@ export function MacroAreaAccordion({ title, children, defaultOpen = false, title
             style={{ willChange: "height, opacity" }}
             className="overflow-hidden"
           >
-            <div className="px-1 md:px-2 pt-3 pb-4">
+            <div className="ml-2 md:ml-3 pl-3 md:pl-4 pr-1 md:pr-2 pt-3 pb-4 border-l-2 border-accent/20">
               {children}
             </div>
           </motion.div>
