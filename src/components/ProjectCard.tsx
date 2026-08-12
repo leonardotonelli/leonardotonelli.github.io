@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ImageIcon } from "lucide-react";
 
 interface ProjectProps {
   title: string;
@@ -13,6 +13,8 @@ interface ProjectProps {
   tags: string[];
   link?: string;
   github?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export function ProjectCard({
@@ -28,18 +30,39 @@ export function ProjectCard({
   tags,
   link,
   github,
+  image,
+  imageAlt,
 }: ProjectProps) {
   return (
     <article className="group relative mb-4 p-5 rounded-lg border border-border/60 bg-border/10 last:mb-0">
-      <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4">
-        <h3 className="text-lg font-medium text-ink group-hover:text-accent transition-colors">
-          {link ? (
-            <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              {title} <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
-          ) : title}
-        </h3>
-        {role && <span className="text-sm text-muted font-mono mt-1 md:mt-0 italic">{role}</span>}
+      <div className="flex items-start gap-4 md:gap-5 mb-5">
+        <div className="shrink-0 w-20 h-16 md:w-28 md:h-20 rounded-md border border-border/60 bg-bg/60 overflow-hidden flex items-center justify-center">
+          {image ? (
+            <img
+              src={image}
+              alt={imageAlt || `${title} project image`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <>
+              <ImageIcon size={20} className="text-muted/50" aria-hidden="true" />
+              <span className="sr-only">Image placeholder for {title}</span>
+            </>
+          )}
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <h3 className="text-lg font-medium text-ink group-hover:text-accent transition-colors">
+            {link ? (
+              <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                {title} <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+            ) : title}
+          </h3>
+          {role && <span className="block text-sm text-muted font-mono mt-1 italic">{role}</span>}
+        </div>
       </div>
 
       {description && (
