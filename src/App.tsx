@@ -223,7 +223,7 @@ const Projects = () => (
         />
       </MacroAreaAccordion>
 
-      <MacroAreaAccordion title="Optimization & Statistical Physics">
+      <MacroAreaAccordion title="Optimization">
         <ProjectCard
           title="CIFAR-10 Optimizer Benchmark"
           role="Project Lead – Mathematics of Data, EPFL"
