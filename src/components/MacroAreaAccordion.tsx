@@ -20,7 +20,10 @@ export function MacroAreaAccordion({ title, children, defaultOpen = false, title
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className="w-full flex items-center justify-between py-6 group text-left"
+        className={cn(
+          "w-full flex items-center justify-between px-2 py-5 group text-left transition-colors",
+          isOpen && "bg-border/10"
+        )}
       >
         <h3 className={cn(
           "text-xs uppercase tracking-[0.3em] font-bold transition-colors",
@@ -56,7 +59,7 @@ export function MacroAreaAccordion({ title, children, defaultOpen = false, title
             style={{ willChange: "height, opacity" }}
             className="overflow-hidden"
           >
-            <div className="pb-12 pt-4">
+            <div className="px-1 md:px-2 pt-3 pb-4">
               {children}
             </div>
           </motion.div>
