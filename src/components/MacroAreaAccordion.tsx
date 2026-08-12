@@ -21,7 +21,7 @@ export function MacroAreaAccordion({ title, children, defaultOpen = false, title
         aria-expanded={isOpen}
         aria-controls={panelId}
         className={cn(
-          "w-full flex items-center justify-between px-2 py-5 group text-left transition-colors",
+          "w-full flex items-center justify-between px-2 py-5 group text-left transition-colors outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-accent/50",
           isOpen && "bg-border/10"
         )}
       >

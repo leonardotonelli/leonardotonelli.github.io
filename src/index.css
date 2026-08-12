@@ -59,6 +59,14 @@ html.theme-transition *::after {
   html {
     scroll-behavior: auto;
   }
+
+  .project-card,
+  .social-link,
+  .research-interest,
+  .research-mark,
+  .brand-mark {
+    transition: none;
+  }
 }
 
 .glass {
@@ -67,6 +75,65 @@ html.theme-transition *::after {
 
 .max-width-3xl {
   max-width: 800px;
+}
+
+.project-placeholder {
+  background:
+    radial-gradient(circle at 75% 25%, color-mix(in srgb, var(--color-accent) 11%, transparent), transparent 45%),
+    color-mix(in srgb, var(--color-border) 18%, var(--color-bg));
+}
+
+.project-card,
+.social-link,
+.research-interest,
+.brand-mark {
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+.brand-mark {
+  opacity: 0.7;
+  transition-property: opacity;
+}
+
+.project-card {
+  transition-property: transform, border-color, background-color;
+}
+
+.social-link {
+  transition-property: transform, color, background-color, border-color;
+}
+
+.research-interest {
+  transition-property: transform;
+}
+
+.research-mark {
+  @apply mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/5 text-accent;
+  transition: background-color 200ms ease-out;
+}
+
+@media (hover: hover) {
+  .project-card:hover,
+  .research-interest:hover {
+    transform: translateY(-2px);
+  }
+
+  .project-card:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+  }
+
+  .social-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .research-interest:hover .research-mark {
+    background-color: color-mix(in srgb, var(--color-accent) 11%, transparent);
+  }
+
+  .brand-link:hover .brand-mark {
+    opacity: 1;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {

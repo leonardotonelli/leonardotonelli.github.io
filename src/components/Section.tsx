@@ -18,9 +18,12 @@ export function Section({ title, children, className, id }: SectionProps) {
       className={cn("w-full", className)}
     >
       {title && (
-        <h2 className="text-xl md:text-2xl font-medium mb-6 text-ink">
-          {title}
-        </h2>
+        <div className="flex items-center gap-3 mb-6">
+          <h2 className="text-xl md:text-2xl font-medium text-ink">
+            {title}
+          </h2>
+          <span className="w-7 h-px bg-accent/50" aria-hidden="true" />
+        </div>
       )}
       <div className="w-full">
         {children}

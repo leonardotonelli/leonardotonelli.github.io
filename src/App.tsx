@@ -43,16 +43,16 @@ const Home = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-3">
-                    <a href="mailto:leonardotonelli03@gmail.com" title="Contact" className="flex items-center justify-center w-10 h-10 bg-ink text-bg rounded-full hover:bg-ink/90 transition-colors duration-200 shadow-sm">
+                    <a href="mailto:leonardotonelli03@gmail.com" title="Contact" className="social-link flex items-center justify-center w-10 h-10 bg-ink text-bg rounded-full hover:bg-ink/90 transition-colors duration-200 shadow-sm">
                       <Mail size={18} />
                     </a>
-                    <a href="https://github.com/leonardotonelli" target="_blank" rel="noopener noreferrer" title="GitHub" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
+                    <a href="https://github.com/leonardotonelli" target="_blank" rel="noopener noreferrer" title="GitHub" className="social-link flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
                       <Github size={18} />
                     </a>
-                    <a href="https://www.linkedin.com/in/leonardo-tonelli-640538237/" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
+                    <a href="https://www.linkedin.com/in/leonardo-tonelli-640538237/" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="social-link flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
                       <Linkedin size={18} />
                     </a>
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" title="CV" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
+                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" title="CV" className="social-link flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
                       <FileText size={18} />
                     </a>
                   </div>
@@ -143,29 +143,29 @@ const Research = () => (
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 mb-16">
-        <div className="flex gap-4">
-          <div className="mt-1 text-accent"><ChartNoAxesCombined size={20} /></div>
+        <div className="research-interest flex gap-4">
+          <div className="research-mark"><ChartNoAxesCombined size={18} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Statistical Machine Learning</h4>
             <p className="text-sm text-muted">Uncertainty quantification, robustness, and generalization in modern learning systems.</p>
           </div>
         </div>
-        <div className="flex gap-4">
-          <div className="mt-1 text-accent"><Layers3 size={20} /></div>
+        <div className="research-interest flex gap-4">
+          <div className="research-mark"><Layers3 size={18} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Representation Learning</h4>
             <p className="text-sm text-muted">Learning useful and reliable representations from high-dimensional and structured data.</p>
           </div>
         </div>
-        <div className="flex gap-4">
-          <div className="mt-1 text-accent"><Network size={20} /></div>
+        <div className="research-interest flex gap-4">
+          <div className="research-mark"><Network size={18} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Graph & Geometric Learning</h4>
             <p className="text-sm text-muted">GNNs and relational methods for healthcare, biology, engineering, and social systems.</p>
           </div>
         </div>
-        <div className="flex gap-4">
-          <div className="mt-1 text-accent"><GitBranch size={20} /></div>
+        <div className="research-interest flex gap-4">
+          <div className="research-mark"><GitBranch size={18} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Causal & Sequential Learning</h4>
             <p className="text-sm text-muted">Causal machine learning and sequential decision-making when they connect to these problems.</p>
@@ -457,7 +457,9 @@ const AppContent = () => {
       {/* Navigation */}
       <nav className="shrink-0 glass border-b border-border/40 sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <NavLink to="/" className="font-serif text-lg font-medium tracking-tight">Leonardo Tonelli</NavLink>
+          <NavLink to="/" className="brand-link font-serif text-lg font-medium tracking-tight">
+            Leonardo Tonelli<span className="brand-mark text-accent" aria-hidden="true">.</span>
+          </NavLink>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">

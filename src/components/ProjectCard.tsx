@@ -1,4 +1,4 @@
-import { ExternalLink, Github, ImageIcon } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectProps {
   title: string;
@@ -33,8 +33,16 @@ export function ProjectCard({
   image,
   imageAlt,
 }: ProjectProps) {
+  const monogram = title
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+
   return (
-    <article className="group relative mb-4 p-5 rounded-lg border border-border/60 bg-border/10 last:mb-0">
+    <article className="project-card group relative mb-4 p-5 rounded-lg border border-border/60 bg-border/10 last:mb-0">
       <div className="flex items-start gap-4 md:gap-5">
         <div className="self-center shrink-0 w-20 md:w-28 aspect-square rounded-md border border-border/60 bg-bg/60 overflow-hidden flex items-center justify-center">
           {image ? (
@@ -46,10 +54,16 @@ export function ProjectCard({
               decoding="async"
             />
           ) : (
-            <>
-              <ImageIcon size={20} className="text-muted/50" aria-hidden="true" />
-              <span className="sr-only">Image placeholder for {title}</span>
-            </>
+            <div
+              className="project-placeholder relative w-full h-full flex items-center justify-center"
+              role="img"
+              aria-label={`Image placeholder for ${title}`}
+            >
+              <span className="font-mono text-xs md:text-sm tracking-[0.18em] text-accent/70 translate-x-[0.09em]">
+                {monogram}
+              </span>
+              <span className="absolute right-2.5 bottom-2.5 w-1 h-1 rounded-full bg-accent/50" />
+            </div>
           )}
         </div>
 
