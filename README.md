@@ -16,3 +16,9 @@ npm run dev
 ```bash
 npm run build
 ```
+
+GitHub Pages currently serves the repository root. To rebuild and copy the production files there, run:
+
+```bash
+npm run publish:root
+```
