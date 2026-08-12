@@ -101,7 +101,14 @@ export function ProjectCard({
           </span>
         ))}
         {github && (
-          <a href={github} target="_blank" rel="noopener noreferrer" className="ml-auto text-muted hover:text-ink transition-colors">
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${title} on GitHub`}
+            title="View repository"
+            className="ml-auto text-muted hover:text-ink transition-colors"
+          >
             <Github size={18} />
           </a>
         )}

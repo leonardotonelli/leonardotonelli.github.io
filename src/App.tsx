@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, NavLink, useLocation, Link, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { Github, Linkedin, Mail, FileText, ArrowRight, Code, BookOpen, Target, ChevronRight, ChevronDown, ExternalLink, Menu, X } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, ArrowRight, Code, BookOpen, Target, ChevronDown, Menu, X } from "lucide-react";
 import { Section } from "./components/Section";
 import { ProjectCard } from "./components/ProjectCard";
 import { ExperienceItem } from "./components/ExperienceItem";
@@ -21,26 +21,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 const Home = () => {
-  const [papers, setPapers] = React.useState<any[]>([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState<string | null>(null);
   const [isSummariesOpen, setIsSummariesOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    const fetchPapers = async () => {
-      try {
-        const response = await fetch("/api/papers");
-        if (!response.ok) throw new Error("Failed to fetch papers");
-        const data = await response.json();
-        setPapers(data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPapers();
-  }, []);
 
   return (
     <PageWrapper>
@@ -62,7 +43,7 @@ const Home = () => {
                     Leonardo Tonelli
                   </h1>
                   <p className="text-base md:text-lg font-serif italic text-muted mb-6 leading-relaxed">
-                    MSc Statistics student at EPFL exploring the mathematical foundations of learning and statistical inference.
+                    MSc Statistics student at EPFL, with a minor in Data Science. Currently a research intern at OIST.
                   </p>
 
                   <div className="flex flex-wrap gap-3">
@@ -84,10 +65,10 @@ const Home = () => {
 
               <div className="prose prose-ink prose-sm max-w-none mb-12">
                 <p className="mb-4">
-                  My academic journey is driven by a fundamental curiosity about how we can extract rigorous insights from complex data. I am currently pursuing an <strong>MSc in Statistics at EPFL</strong>, where I focus on the intersection of statistical computation, optimization, and deep learning.
+                  I study statistics and machine learning, with a current focus on representation learning, causal inference, and reinforcement learning. At OIST, I am working on action-conditioned JEPA image models and studying what they retain when future observations are uncertain.
                 </p>
                 <p className="mb-4">
-                  Previously, I graduated Cum Laude from <strong>Bocconi University</strong> with a BSc in Economics and Computer Science. My undergraduate thesis, supervised by Prof. Luca Saglietti, explored the solution landscapes of the Binary Perceptron using replicated approaches.
+                  Before EPFL, I completed a BSc in Economics, Management and Computer Science at Bocconi University and spent a semester at NTU Singapore. My bachelor thesis studied replicated optimization methods for the Binary Perceptron.
                 </p>
               </div>
 
@@ -113,7 +94,7 @@ const Home = () => {
                 </button>
 
                 <p className="text-xs text-muted leading-relaxed mb-8 font-serif w-full text-left">
-                  this is a little experiment of mine, where I summarize (when I have time) papers that I read/find interesting, briefly, using my own words. I am a firm believer that explaining something is the most effective way to test understanding, and in this time period where the temptation to have an LLM do your work is high, I think this is a good thinking exercise. Hope you don't mind mistakes along the way, I’m still learning :)
+                  A small collection of papers I have read and summarized in my own words. Writing the summaries helps me check what I understood. There may be mistakes; I am still learning.
                 </p>
 
                 <AnimatePresence initial={false}>
@@ -152,40 +133,40 @@ const Research = () => (
         <div className="flex gap-4">
           <div className="mt-1 text-accent"><Target size={20} /></div>
           <div>
-            <h4 className="font-medium text-lg mb-1">Statistical ML</h4>
-            <p className="text-sm text-muted">Theoretical foundations of generalization, high-dimensional statistics, and inference in complex models.</p>
+            <h4 className="font-medium text-lg mb-1">Representation Learning</h4>
+            <p className="text-sm text-muted">World models, joint-embedding methods, and useful invariances under uncertainty.</p>
           </div>
         </div>
         <div className="flex gap-4">
           <div className="mt-1 text-accent"><Code size={20} /></div>
           <div>
-            <h4 className="font-medium text-lg mb-1">Deep Learning & Optimization</h4>
-            <p className="text-sm text-muted">Optimization dynamics in neural networks and Graph Neural Networks</p>
+            <h4 className="font-medium text-lg mb-1">Statistical Machine Learning</h4>
+            <p className="text-sm text-muted">Inference, optimization, and evaluation in high-dimensional learning problems.</p>
           </div>
         </div>
         <div className="flex gap-4">
           <div className="mt-1 text-accent"><BookOpen size={20} /></div>
           <div>
-            <h4 className="font-medium text-lg mb-1">Reinforcement Learning</h4>
-            <p className="text-sm text-muted">Causal Reinforcement learning</p>
+            <h4 className="font-medium text-lg mb-1">Causal Learning & RL</h4>
+            <p className="text-sm text-muted">Interventions, reward identifiability, and learning across related environments.</p>
           </div>
         </div>
         <div className="flex gap-4">
           <div className="mt-1 text-accent"><ArrowRight size={20} /></div>
           <div>
-            <h4 className="font-medium text-lg mb-1">Causal Inference</h4>
-            <p className="text-sm text-muted">Identification and estimation of causal effects from observational data and experimental design.</p>
+            <h4 className="font-medium text-lg mb-1">Interpretability</h4>
+            <p className="text-sm text-muted">Understanding learned representations and comparing circuits across models.</p>
           </div>
         </div>
       </div>
 
       <div className="prose prose-ink max-w-none">
-        <h3 className="text-xl font-medium mb-4">Trajectory & Direction</h3>
+        <h3 className="text-xl font-medium mb-4">Current work</h3>
         <p className="mb-6">
-          Looking forward, my research direction is centered on the <strong>mathematical foundations of deep learning</strong>. I am particularly interested in how the geometry of the loss landscape influences the generalization capabilities of neural networks.
+          At OIST, I am evaluating a ViT-based, action-conditioned JEPA world model on CIFAR-10, dSprites, and MPI3D. I use controlled interventions, compositional splits, retrieval metrics, and frozen linear probes to study which parts of a state the model keeps or ignores.
         </p>
         <p>
-          During my time at EPFL, I aim to explore <strong>high-dimensional statistics</strong> and <strong>stochastic processes</strong> to better understand the implicit regularization effects of gradient-based optimization. My goal is to develop more interpretable and reliable ML systems that can perform under rigorous statistical guarantees.
+          Other recent work has covered frame-level multimodal hate localization, cross-model circuit alignment in language models, and reward identifiability in inverse reinforcement learning.
         </p>
       </div>
     </Section>
@@ -195,34 +176,34 @@ const Research = () => (
 const Projects = () => (
   <PageWrapper>
     <Section title="Selected Projects">
-      <MacroAreaAccordion title="On going.." titleClassName="text-accent" defaultOpen={false}>
+      <MacroAreaAccordion title="Recent research projects" titleClassName="text-accent" defaultOpen>
         <ProjectCard
-          title="Temporal Hate Speech Detection"
-          role="Deep Learning Course Project – EPFL"
+          title="Frame-Level Multimodal Hate Localization"
+          role="Deep Learning – EPFL"
           highlights={[
-            "Developing a deep learning model to detect hate speech in temporal data streams",
-            "Exploring recurrent architectures and attention mechanisms for sequential text analysis",
-            "Analyzing the evolution of linguistic patterns in online discourse over time"
+            "Built a frame-level video pipeline combining visual, audio, speech, and OCR features from SigLIP2, WavLM, Whisper, HateBERT, and EasyOCR.",
+            "Compared fusion models and ablations; the full model reached 0.733 frame mAP and 0.852 AUC on HateMM."
           ]}
-          tags={["Deep Learning", "NLP", "Temporal Analysis", "PyTorch"]}
+          tags={["PyTorch", "Multimodal Learning", "Video", "NLP"]}
         />
         <ProjectCard
-          title="Reinforcement Learning Project"
-          role="RL Course Project – EPFL"
+          title="Cross-Model Circuit Alignment in Pythia LLMs"
+          role="Modern NLP – EPFL"
           highlights={[
-            "Project details to be determined (TBD)",
-            "Focusing on advanced RL algorithms and environment stabilization"
+            "Studied whether attention-head circuits from Pythia-410M can help locate related circuits in Pythia-1B on the Indirect Object Identification task.",
+            "Used CKA alignment and causal ablations; the results suggest alignment is useful as a lower-compute pre-filter, rather than a replacement for target-side attribution."
           ]}
-          tags={["Reinforcement Learning", "TBD"]}
+          tags={["Mechanistic Interpretability", "Pythia", "CKA", "Causal Ablation"]}
+          github="https://github.com/leonardotonelli/ModernNLP-CS552"
         />
         <ProjectCard
-          title="Modern NLP Project"
-          role="Modern NLP Course Project – EPFL"
+          title="The Geometry of Reward Identifiability in IRL"
+          role="Reinforcement Learning – EPFL"
           highlights={[
-            "Project details to be determined (TBD)",
-            "Exploring state-of-the-art transformer architectures and large language models"
+            "Studied when entropy-regularized expert behavior identifies a reward, across finite-horizon, infinite-horizon, and multi-environment MDPs.",
+            "Connected access, rank, and graph-coverability conditions and derived extensions for multiple experts and approximate settings."
           ]}
-          tags={["NLP", "Transformers", "LLMs", "TBD"]}
+          tags={["Inverse RL", "MaxEnt IRL", "MDPs", "Identifiability"]}
         />
       </MacroAreaAccordion>
 
@@ -231,14 +212,11 @@ const Projects = () => (
           title="Deep Q-Network (DQN) Reproduction"
           role="Head of Project – Hephaestus Applied AI"
           highlights={[
-            "Led a team of 3 in reproducing the Deep Q-Network (DQN) architecture from Mnih et al. (2013), implementing the full training pipeline in PyTorch, Gymnasium, and NumPy",
-            "Designed and trained a CNN-based Q-network with experience replay, target network stabilization, reward clipping, and ε-greedy exploration",
-            "Conducted controlled experiments on Demon Attack, training for 1,000 episodes (~3 hours); analyzed convergence trends via Q-value and reward progression",
-            "Evaluated model behavior through post-training simulations and state-value inspection",
-            "Documented theoretical foundations and hyperparameter trade-offs in a 17-page technical report"
+            "Led a team of three in reproducing the DQN architecture from Mnih et al. (2013) in PyTorch, Gymnasium, and NumPy.",
+            "Trained and evaluated the agent on Demon Attack using experience replay, a target network, reward clipping, and ε-greedy exploration."
           ]}
           tags={["PyTorch", "Gymnasium", "CNN", "DQN", "Research Replication"]}
-          github="https://github.com/leonardotonelli/Atari"
+          github="https://github.com/leonardotonelli/dqn-atari"
         />
       </MacroAreaAccordion>
 
@@ -247,25 +225,21 @@ const Projects = () => (
           title="CIFAR-10 Optimizer Benchmark"
           role="Project Lead – Mathematics of Data, EPFL"
           highlights={[
-            "Led a benchmarking study comparing Adam, Muon, Scion, and Dion optimizers on CIFAR-10 using ResNet-18 and ViT architecture",
-            "Designed reproducible training pipelines in PyTorch with mixed-precision (AMP)",
-            "Evaluated optimizer dynamics via training loss convergence and validation accuracy curves",
-            "Observed Scion’s accelerated convergence on ResNet and competitive final accuracy",
-            "Implemented modular architecture with custom optimizer interfaces and experiment logging"
+            "Compared Adam, Muon, Scion, and Dion on CIFAR-10 using ResNet-18 and a small Vision Transformer.",
+            "Built reproducible mixed-precision training and evaluation pipelines for convergence and validation accuracy."
           ]}
           tags={["PyTorch", "ResNet", "ViT", "Optimization", "Benchmarking"]}
+          github="https://github.com/leonardotonelli/optimizers-CIFAR10"
         />
         <ProjectCard
           title="Replicated Approaches to the Binary Perceptron"
           role="Bachelor Thesis – Advisor: Prof. Luca Saglietti"
           highlights={[
-            "Replicated and extended entropy-based learning algorithms for the Binary Perceptron (NP-hard problem)",
-            "Derived and implemented Replicated Simulated Annealing (RSA) and Replicated Gradient Descent (RGD)",
-            "Formalized interacting replica Hamiltonian and entropy-biased probability measures",
-            "Conducted numerical experiments demonstrating consistent convergence improvements over non-interacting baselines",
-            "Analyzed phase-transition behavior in solvability and solution landscape geometry"
+            "Replicated entropy-based Binary Perceptron solvers using Replicated Simulated Annealing and Replicated Gradient Descent.",
+            "Compared interacting-replica methods with standard baselines across problem sizes and constraint densities."
           ]}
           tags={["Statistical Mechanics", "MCMC", "Optimization Theory", "Python"]}
+          github="https://github.com/leonardotonelli/bachelor-thesis"
         />
       </MacroAreaAccordion>
 
@@ -274,24 +248,21 @@ const Projects = () => (
           title="Manifold Learning Benchmark"
           role="Statistical Machine Learning – EPFL"
           highlights={[
-            "Co-developed a unified benchmarking framework to systematically compare PCA, Isomap, LLE, Laplacian Eigenmaps, t-SNE, UMAP, and Autoencoders",
-            "Designed large-scale hyperparameter grid searches with checkpointing and parallel execution",
-            "Evaluated embeddings using Averaged Jaccard, Random Triplet Accuracy, k-NN accuracy, and StabAUC stability",
-            "Quantified the local–global trade-off and analyzed downstream task performance in 2D embeddings"
+            "Compared PCA, Isomap, LLE, Laplacian Eigenmaps, t-SNE, UMAP, and autoencoders on synthetic and real datasets.",
+            "Measured local and global structure, downstream performance, stability, and out-of-sample behavior."
           ]}
           tags={["Manifold Learning", "t-SNE", "UMAP", "Autoencoders", "Benchmarking"]}
+          github="https://github.com/leonardotonelli/non-linear-dim-reduction"
         />
         <ProjectCard
           title="Credit Scoring under Class Imbalance"
           role="Project Lead – Bocconi University"
           highlights={[
-            "Developed a credit default prediction model (minority class = 6.7%) using resampling and cost-sensitive learning",
-            "Conducted full EDA and feature engineering, introducing domain-informed features like LatePaymentsFrequency",
-            "Benchmarked Logistic Regression against ensemble methods; improved performance using Boosted Decision Trees",
-            "Implemented and compared SMOTE, RUS, ROS, and Balanced Bagging"
+            "Compared resampling, cost-sensitive learning, and ensemble methods for a credit-default dataset with a 6.7% minority class.",
+            "A boosted-tree model with random undersampling improved ROC-AUC from 0.8077 for logistic regression to 0.8582."
           ]}
           tags={["Scikit-Learn", "Imbalanced Learning", "Ensemble Methods", "Applied ML"]}
-          github="https://github.com/leonardotonelli/CreditScoring"
+          github="https://github.com/leonardotonelli/credit-scoring"
         />
       </MacroAreaAccordion>
 
@@ -300,12 +271,11 @@ const Projects = () => (
           title="Handling Incomplete Data: EM vs. Imputation"
           role="Statistical Computation Course Project"
           highlights={[
-            "Designed a full-factorial simulation study comparing EM, MICE, kNN, and baseline imputations",
-            "Implemented EM for Multivariate Normal parameter recovery and semi-supervised GMMs",
-            "Evaluated estimation accuracy via L2 mean error and Frobenius covariance error",
-            "Demonstrated EM’s theoretical optimality under MAR and quantified asymptotic bias under MNAR"
+            "Compared EM, MICE, kNN, and baseline imputations under MCAR, MAR, and MNAR missingness.",
+            "Implemented EM for multivariate-normal estimation and semi-supervised Gaussian mixtures, then tested the methods in simulation and on clinical data."
           ]}
           tags={["EM Algorithm", "MICE", "Inference", "Simulation Study"]}
+          github="https://github.com/leonardotonelli/em-imputation"
         />
       </MacroAreaAccordion>
     </Section>
@@ -324,10 +294,11 @@ const Experience = () => (
               <h4 className="font-medium">MSc Statistics</h4>
               <p className="text-sm text-accent">EPFL, Lausanne</p>
               <p className="text-xs text-muted font-mono">2025 — Present</p>
+              <p className="text-xs text-muted mt-1 italic">Minor in Data Science · GPA 5.55 / 6.0</p>
             </div>
             <div className="relative pl-6 border-l border-border/60">
               <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent" />
-              <h4 className="font-medium">BSc Economics & CS</h4>
+              <h4 className="font-medium">BSc Economics, Management & CS</h4>
               <p className="text-sm text-accent">Bocconi University</p>
               <p className="text-xs text-muted font-mono">2022 — 2025</p>
               <p className="text-xs text-muted mt-1 italic">110/110 Cum Laude</p>
@@ -336,30 +307,41 @@ const Experience = () => (
               <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent" />
               <h4 className="font-medium">Exchange Programme</h4>
               <p className="text-sm text-accent">NTU Singapore</p>
-              <p className="text-xs text-muted font-mono">2025</p>
+              <p className="text-xs text-muted font-mono">Jan — May 2025</p>
             </div>
           </div>
         </div>
         <div>
           <h3 className="text-xs uppercase tracking-[0.3em] text-accent font-bold mb-8">Experience</h3>
           <ExperienceItem
-            title="Research Assistant"
-            organization="Bocconi University"
-            period="2024"
+            title="Research Intern"
+            organization="Okinawa Institute of Science and Technology"
+            period="Jul — Sep 2026"
+            location="Okinawa, Japan"
+            link="https://www.oist.jp/"
             description={[
-              "Conducted statistical analyses on large-scale RCT experimental data (1,200 participants).",
-              "Applied ANOVA, GLMs, and regularization techniques to decision-making behavior.",
-              "Collaborated with faculty from Law and Political Science departments."
+              "Studying how action-conditioned JEPA models represent state transitions when future observations are uncertain.",
+              "Evaluating a ViT-based image world model with controlled interventions, compositional splits, retrieval metrics, and frozen linear probes."
             ]}
           />
           <ExperienceItem
-            title="AI Solutions Developer"
-            organization="Obloo Ventures"
-            period="2024"
+            title="Research Assistant"
+            organization="Bocconi University"
+            period="Sep — Dec 2024"
+            location="Milan, Italy"
             description={[
-              "Developed AI-powered RAG architecture for transcription and topic extraction.",
-              "Optimized meeting value extraction by 3x through automated indexing.",
-              "Implemented Docker-based deployment pipelines for local LLM inference."
+              "Analyzed randomized-trial data from about 1,200 participants and one million eye-tracking observations.",
+              "Used ANOVA, regularized regression, and GLMs in reproducible Python workflows."
+            ]}
+          />
+          <ExperienceItem
+            title="Software Developer"
+            organization="Obloo Ventures"
+            period="Jun — Sep 2024"
+            location="Milan, Italy"
+            description={[
+              "Built an NLP application for transcribing, summarizing, and extracting themes from venture-capital meetings.",
+              "Contributed to a RAG workflow deployed with Docker, Streamlit, Groq, and Hugging Face tooling."
             ]}
           />
         </div>
@@ -471,7 +453,7 @@ const AppContent = () => {
         </div>
       </main>
 
-      <footer className="shrink-0 py-6 border-t border-border/40" title="Built with help from Codex">
+      <footer className="shrink-0 py-6 border-t border-border/40" title="Tiny disclaimer: Codex helped build this site. Thanks, Codex.">
         <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
           <p className="text-[9px] text-muted font-mono uppercase tracking-widest">
             © {new Date().getFullYear()} Leonardo Tonelli
