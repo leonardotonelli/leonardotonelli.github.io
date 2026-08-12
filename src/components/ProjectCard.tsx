@@ -35,8 +35,8 @@ export function ProjectCard({
 }: ProjectProps) {
   return (
     <article className="group relative mb-4 p-5 rounded-lg border border-border/60 bg-border/10 last:mb-0">
-      <div className="flex items-stretch gap-4 md:gap-5">
-        <div className="shrink-0 w-20 md:w-28 rounded-md border border-border/60 bg-bg/60 overflow-hidden flex items-center justify-center">
+      <div className="flex items-start gap-4 md:gap-5">
+        <div className="shrink-0 w-20 md:w-28 aspect-square rounded-md border border-border/60 bg-bg/60 overflow-hidden flex items-center justify-center">
           {image ? (
             <img
               src={image}
