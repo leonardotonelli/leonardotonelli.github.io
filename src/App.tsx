@@ -457,7 +457,7 @@ const AppContent = () => {
       {/* Navigation */}
       <nav className="shrink-0 glass border-b border-border/40 sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <NavLink to="/" className="brand-link font-serif text-lg font-medium tracking-tight">
+          <NavLink to="/" className="brand-link flex h-full translate-y-px items-center font-serif text-lg font-medium leading-none tracking-tight">
             Leonardo Tonelli<span className="brand-mark text-accent" aria-hidden="true">.</span>
           </NavLink>
 
