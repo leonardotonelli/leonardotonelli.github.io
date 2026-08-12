@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, MotionConfig } from "motion/react";
-import { Github, Linkedin, Mail, FileText, ArrowRight, Code, BookOpen, Target, ChevronDown, Menu, X } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, Layers3, ChartNoAxesCombined, GitBranch, Search, ChevronDown, Menu, X, Moon, Sun } from "lucide-react";
 import { Section } from "./components/Section";
 import { ProjectCard } from "./components/ProjectCard";
 import { ExperienceItem } from "./components/ExperienceItem";
@@ -64,7 +64,7 @@ const Home = () => {
                   I study statistics and machine learning, with a current focus on representation learning, causal inference, and reinforcement learning. At OIST, I am working on action-conditioned JEPA image models and studying what they retain when future observations are uncertain.
                 </p>
                 <p className="mb-4">
-                  Before EPFL, I completed a BSc in Economics, Management and Computer Science at Bocconi University and spent a semester at NTU Singapore. My bachelor thesis studied replicated optimization methods for the Binary Perceptron.
+                  Before EPFL, I completed a BSc in Economics and Computer Science at Bocconi University and spent a semester at NTU Singapore. My bachelor thesis studied replicated optimization methods for the Binary Perceptron.
                 </p>
               </div>
 
@@ -138,28 +138,28 @@ const Research = () => (
     <Section title="Research Interests">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 mb-16">
         <div className="flex gap-4">
-          <div className="mt-1 text-accent"><Target size={20} /></div>
+          <div className="mt-1 text-accent"><Layers3 size={20} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Representation Learning</h4>
             <p className="text-sm text-muted">World models, joint-embedding methods, and useful invariances under uncertainty.</p>
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="mt-1 text-accent"><Code size={20} /></div>
+          <div className="mt-1 text-accent"><ChartNoAxesCombined size={20} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Statistical Machine Learning</h4>
             <p className="text-sm text-muted">Inference, optimization, and evaluation in high-dimensional learning problems.</p>
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="mt-1 text-accent"><BookOpen size={20} /></div>
+          <div className="mt-1 text-accent"><GitBranch size={20} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Causal Learning & RL</h4>
             <p className="text-sm text-muted">Interventions, reward identifiability, and learning across related environments.</p>
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="mt-1 text-accent"><ArrowRight size={20} /></div>
+          <div className="mt-1 text-accent"><Search size={20} /></div>
           <div>
             <h4 className="font-medium text-lg mb-1">Interpretability</h4>
             <p className="text-sm text-muted">Understanding learned representations and comparing circuits across models.</p>
@@ -230,7 +230,7 @@ const Projects = () => (
       <MacroAreaAccordion title="Optimization">
         <ProjectCard
           title="CIFAR-10 Optimizer Benchmark"
-          role="Project Lead – Mathematics of Data, EPFL"
+          role="Mathematics of Data – EPFL"
           highlights={[
             "Compared Adam, Muon, Scion, and Dion on CIFAR-10 using ResNet-18 and a small Vision Transformer.",
             "Built reproducible mixed-precision training and evaluation pipelines for convergence and validation accuracy."
@@ -305,15 +305,15 @@ const Experience = () => (
             </div>
             <div className="relative pl-6 border-l border-border/60">
               <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent" />
-              <h4 className="font-medium">BSc Economics, Management & CS</h4>
-              <p className="text-sm text-accent">Bocconi University</p>
+              <h4 className="font-medium">BSc Economics & Computer Science</h4>
+              <p className="text-sm text-accent">Bocconi University, Milan</p>
               <p className="text-xs text-muted font-mono">2022 — 2025</p>
               <p className="text-xs text-muted mt-1 italic">110/110 Cum Laude</p>
             </div>
             <div className="relative pl-6 border-l border-border/60">
               <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent" />
               <h4 className="font-medium">Exchange Programme</h4>
-              <p className="text-sm text-accent">NTU Singapore</p>
+              <p className="text-sm text-accent">NTU, Singapore</p>
               <p className="text-xs text-muted font-mono">Jan — May 2025</p>
             </div>
           </div>
@@ -336,6 +336,7 @@ const Experience = () => (
             organization="Bocconi University"
             period="Sep — Dec 2024"
             location="Milan, Italy"
+            link="https://www.unibocconi.it/en/about-us"
             description={[
               "Analyzed randomized-trial data from about 1,200 participants and one million eye-tracking observations.",
               "Used ANOVA, regularized regression, and GLMs in reproducible Python workflows."
@@ -346,6 +347,7 @@ const Experience = () => (
             organization="Obloo Ventures"
             period="Jun — Sep 2024"
             location="Milan, Italy"
+            link="https://obloo.vc/"
             description={[
               "Built an NLP application for transcribing, summarizing, and extracting themes from venture-capital meetings.",
               "Contributed to a RAG workflow deployed with Docker, Streamlit, Groq, and Hugging Face tooling."
@@ -356,6 +358,38 @@ const Experience = () => (
     </Section>
   </PageWrapper>
 );
+
+type Theme = "light" | "dark";
+
+const ThemeToggle = () => {
+  const [theme, setTheme] = React.useState<Theme>(() =>
+    document.documentElement.classList.contains("dark") ? "dark" : "light"
+  );
+
+  React.useEffect(() => {
+    const isDark = theme === "dark";
+    document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.style.colorScheme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", isDark ? "#0f1115" : "#ffffff");
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {}
+  }, [theme]);
+
+  const nextTheme = theme === "light" ? "dark" : "light";
+
+  return (
+    <button
+      type="button"
+      onClick={() => setTheme(nextTheme)}
+      className="flex items-center justify-center w-9 h-9 text-muted hover:text-ink transition-colors"
+      aria-label={`Switch to ${nextTheme} mode`}
+      title={`Switch to ${nextTheme} mode`}
+    >
+      {theme === "light" ? <Moon size={17} /> : <Sun size={17} />}
+    </button>
+  );
+};
 
 const NavItem = ({ to, label, onClick, mobile }: { to: string; label: string; onClick?: () => void; mobile?: boolean }) => (
   <NavLink
@@ -412,23 +446,27 @@ const AppContent = () => {
           <NavLink to="/" className="font-serif text-lg font-medium tracking-tight">Leonardo Tonelli</NavLink>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-6">
+          <div className="hidden md:flex items-center gap-6">
             <NavItem to="/" label="Home" />
             <NavItem to="/research" label="Research" />
             <NavItem to="/projects" label="Projects" />
             <NavItem to="/experience" label="Experience" />
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-muted hover:text-ink transition-colors"
-            onClick={() => setIsMenuOpen((open) => !open)}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-navigation"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="md:hidden flex items-center gap-1">
+            <ThemeToggle />
+            <button
+              className="p-2 text-muted hover:text-ink transition-colors"
+              onClick={() => setIsMenuOpen((open) => !open)}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation Overlay */}

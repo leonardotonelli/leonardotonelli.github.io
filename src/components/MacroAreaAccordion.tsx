@@ -15,7 +15,7 @@ export function MacroAreaAccordion({ title, children, defaultOpen = false, title
   const panelId = useId();
 
   return (
-    <div className="mb-6 border-b border-border/40 last:border-0">
+    <div className="border-t border-border last:border-b">
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}

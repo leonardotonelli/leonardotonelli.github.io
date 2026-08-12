@@ -30,7 +30,7 @@ export function ProjectCard({
   github,
 }: ProjectProps) {
   return (
-    <div className="group relative mb-16 last:mb-0">
+    <article className="group relative mb-12 pb-12 border-b border-border/60 last:mb-0 last:pb-0 last:border-0">
       <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4">
         <h3 className="text-lg font-medium text-ink group-hover:text-accent transition-colors">
           {link ? (
@@ -113,6 +113,6 @@ export function ProjectCard({
           </a>
         )}
       </div>
-    </div>
+    </article>
   );
 }

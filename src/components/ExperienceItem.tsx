@@ -11,15 +11,15 @@ export function ExperienceItem({ title, organization, period, location, descript
   return (
     <div className="mb-10 last:mb-0">
       <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-2">
-        <h3 className="text-base font-medium text-ink">
-          {title}
-          <span className="mx-2 text-border font-light">@</span>
+        <h3 className="text-base font-medium text-ink leading-relaxed">
+          <span className="text-accent">{title}</span>
+          <span className="mx-2 text-muted font-normal">@</span>
           {link ? (
-            <a href={link} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+            <a href={link} target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-border underline-offset-4 hover:text-accent transition-colors">
               {organization}
             </a>
           ) : (
-            <span className="text-accent">{organization}</span>
+            <span className="text-ink">{organization}</span>
           )}
         </h3>
         <span className="text-sm text-muted font-mono">{period}</span>
