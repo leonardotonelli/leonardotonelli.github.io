@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, MotionConfig } from "motion/react";
 import { Github, Linkedin, Mail, FileText, ArrowRight, Code, BookOpen, Target, ChevronDown, Menu, X } from "lucide-react";
 import { Section } from "./components/Section";
 import { ProjectCard } from "./components/ProjectCard";
@@ -9,15 +9,7 @@ import { MacroAreaAccordion } from "./components/MacroAreaAccordion";
 import { cn } from "@/src/lib/utils";
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ opacity: 0, x: 10 }}
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: -10 }}
-    transition={{ duration: 0.3 }}
-    className="w-full"
-  >
-    {children}
-  </motion.div>
+  <div className="w-full">{children}</div>
 );
 
 const Home = () => {
@@ -34,6 +26,10 @@ const Home = () => {
                   <img
                     src="/profile.jpg"
                     alt="Leonardo Tonelli"
+                    width="320"
+                    height="320"
+                    decoding="async"
+                    fetchPriority="high"
                     className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-2 border-border/40"
                     referrerPolicy="no-referrer"
                   />
@@ -47,16 +43,16 @@ const Home = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-3">
-                    <a href="mailto:leonardotonelli03@gmail.com" title="Contact" className="flex items-center justify-center w-10 h-10 bg-ink text-bg rounded-full hover:bg-ink/90 transition-all shadow-sm">
+                    <a href="mailto:leonardotonelli03@gmail.com" title="Contact" className="flex items-center justify-center w-10 h-10 bg-ink text-bg rounded-full hover:bg-ink/90 transition-colors duration-200 shadow-sm">
                       <Mail size={18} />
                     </a>
-                    <a href="https://github.com/leonardotonelli" target="_blank" title="GitHub" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-all shadow-sm">
+                    <a href="https://github.com/leonardotonelli" target="_blank" rel="noopener noreferrer" title="GitHub" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
                       <Github size={18} />
                     </a>
-                    <a href="https://www.linkedin.com/in/leonardo-tonelli-640538237/" target="_blank" title="LinkedIn" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-all shadow-sm">
+                    <a href="https://www.linkedin.com/in/leonardo-tonelli-640538237/" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
                       <Linkedin size={18} />
                     </a>
-                    <a href="/resume.pdf" target="_blank" title="CV" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-all shadow-sm">
+                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" title="CV" className="flex items-center justify-center w-10 h-10 border border-border rounded-full text-ink hover:bg-border/20 transition-colors duration-200 shadow-sm">
                       <FileText size={18} />
                     </a>
                   </div>
@@ -75,7 +71,9 @@ const Home = () => {
               {/* Paper Summaries (Embed) moved here */}
               <div className="mt-16">
                 <button
-                  onClick={() => setIsSummariesOpen(!isSummariesOpen)}
+                  onClick={() => setIsSummariesOpen((open) => !open)}
+                  aria-expanded={isSummariesOpen}
+                  aria-controls="paper-summaries"
                   className="flex items-center gap-2 group mb-6"
                 >
                   <h3 className={cn(
@@ -103,10 +101,15 @@ const Home = () => {
                 <AnimatePresence initial={false}>
                   {isSummariesOpen && (
                     <motion.div
+                      id="paper-summaries"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      transition={{
+                        height: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+                        opacity: { duration: 0.2, ease: "easeOut" }
+                      }}
+                      style={{ willChange: "height, opacity" }}
                       className="overflow-hidden"
                     >
                       <div className="bg-border/5 border border-border/40 rounded-2xl overflow-hidden shadow-sm h-[480px]">
@@ -115,6 +118,7 @@ const Home = () => {
                           className="w-full h-full"
                           frameBorder="0"
                           allowFullScreen
+                          loading="lazy"
                           title="Notion Paper Summaries"
                         />
                       </div>
@@ -372,7 +376,7 @@ const NavItem = ({ to, label, onClick, mobile }: { to: string; label: string; on
           <motion.div
             layoutId="nav-underline"
             className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
-            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           />
         )}
         {isActive && mobile && (
@@ -393,10 +397,15 @@ const AppContent = () => {
   // Close menu when location changes
   React.useEffect(() => {
     setIsMenuOpen(false);
-  }, [location]);
+  }, [location.pathname]);
+
+  React.useLayoutEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-bg selection:bg-accent/20">
+    <div className="min-h-screen flex flex-col bg-bg selection:bg-accent/20 overflow-x-clip">
       {/* Navigation */}
       <nav className="shrink-0 glass border-b border-border/40 sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -413,7 +422,9 @@ const AppContent = () => {
           {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 text-muted hover:text-ink transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -421,13 +432,18 @@ const AppContent = () => {
         </div>
 
         {/* Mobile Navigation Overlay */}
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {isMenuOpen && (
             <motion.div
+              id="mobile-navigation"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{
+                height: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+                opacity: { duration: 0.18, ease: "easeOut" }
+              }}
+              style={{ willChange: "height, opacity" }}
               className="md:hidden border-t border-border/20 bg-bg/95 backdrop-blur-md overflow-hidden"
             >
               <div className="flex flex-col p-6 gap-2">
@@ -446,8 +462,15 @@ const AppContent = () => {
           "max-w-5xl mx-auto px-6 pt-8",
           location.pathname === "/" ? "pb-4" : "pb-16"
         )}>
-          <AnimatePresence mode="wait">
-            <motion.div key={location.pathname}>
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              style={{ willChange: "transform, opacity" }}
+            >
               <Routes location={location}>
                 <Route path="/" element={<Home />} />
                 <Route path="/research" element={<Research />} />
@@ -475,8 +498,10 @@ const AppContent = () => {
 
 export default function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <AppContent />
+      </Router>
+    </MotionConfig>
   );
 }

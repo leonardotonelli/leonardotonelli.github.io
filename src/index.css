@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -18,6 +17,10 @@
     @apply min-h-screen;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-bg text-ink font-sans selection:bg-accent/20;
   }
@@ -28,6 +31,16 @@
 
   p {
     @apply leading-relaxed text-ink/90;
+  }
+
+  a, button {
+    touch-action: manipulation;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 

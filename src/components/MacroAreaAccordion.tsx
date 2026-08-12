@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/src/lib/utils";
@@ -12,11 +12,14 @@ interface MacroAreaAccordionProps {
 
 export function MacroAreaAccordion({ title, children, defaultOpen = false, titleClassName }: MacroAreaAccordionProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const panelId = useId();
 
   return (
     <div className="mb-6 border-b border-border/40 last:border-0">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((open) => !open)}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between py-6 group text-left"
       >
         <h3 className={cn(
@@ -29,6 +32,7 @@ export function MacroAreaAccordion({ title, children, defaultOpen = false, title
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
+          style={{ willChange: "transform" }}
           className={cn(
             "text-muted transition-colors",
             isOpen ? "text-accent" : "group-hover:text-ink"
@@ -41,10 +45,15 @@ export function MacroAreaAccordion({ title, children, defaultOpen = false, title
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={panelId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+            transition={{
+              height: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+              opacity: { duration: 0.2, ease: "easeOut" }
+            }}
+            style={{ willChange: "height, opacity" }}
             className="overflow-hidden"
           >
             <div className="pb-12 pt-4">
