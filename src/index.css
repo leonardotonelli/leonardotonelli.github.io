@@ -85,8 +85,8 @@ html.theme-transition *::after {
   inset: -36px;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 18%, transparent) 0.85px, transparent 1.05px) 0 0 / 32px 32px;
-  opacity: 0.42;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 28%, transparent) 0.85px, transparent 1.05px) 0 0 / 32px 32px;
+  opacity: 0.58;
   -webkit-mask-image: linear-gradient(to right, #000 0%, #000 8%, transparent 18%, transparent 82%, #000 92%, #000 100%);
   mask-image: linear-gradient(to right, #000 0%, #000 8%, transparent 18%, transparent 82%, #000 92%, #000 100%);
   animation: ambient-drift 30s ease-in-out infinite alternate;
@@ -167,7 +167,7 @@ html.theme-transition *::after {
 
 @media (max-width: 767px) {
   .site-shell::before {
-    opacity: 0.18;
+    opacity: 0.3;
     -webkit-mask-image: none;
     mask-image: none;
   }
