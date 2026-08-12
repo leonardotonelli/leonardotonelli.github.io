@@ -365,6 +365,7 @@ const ThemeToggle = () => {
   const [theme, setTheme] = React.useState<Theme>(() =>
     document.documentElement.classList.contains("dark") ? "dark" : "light"
   );
+  const transitionTimer = React.useRef<number | undefined>(undefined);
 
   React.useEffect(() => {
     const isDark = theme === "dark";
@@ -376,12 +377,22 @@ const ThemeToggle = () => {
     } catch {}
   }, [theme]);
 
+  React.useEffect(() => () => window.clearTimeout(transitionTimer.current), []);
+
   const nextTheme = theme === "light" ? "dark" : "light";
+  const switchTheme = () => {
+    window.clearTimeout(transitionTimer.current);
+    document.documentElement.classList.add("theme-transition");
+    setTheme(nextTheme);
+    transitionTimer.current = window.setTimeout(() => {
+      document.documentElement.classList.remove("theme-transition");
+    }, 340);
+  };
 
   return (
     <button
       type="button"
-      onClick={() => setTheme(nextTheme)}
+      onClick={switchTheme}
       className="flex items-center justify-center w-9 h-9 text-muted hover:text-ink transition-colors"
       aria-label={`Switch to ${nextTheme} mode`}
       title={`Switch to ${nextTheme} mode`}

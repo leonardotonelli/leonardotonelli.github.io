@@ -20,6 +20,15 @@ html.dark {
   --color-border: #2f3540;
 }
 
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition-property: color, background-color, border-color, fill, stroke !important;
+  transition-duration: 280ms !important;
+  transition-timing-function: ease !important;
+}
+
 @layer base {
   html, body, #root {
     @apply min-h-screen;
@@ -31,7 +40,6 @@ html.dark {
 
   body {
     @apply bg-bg text-ink font-sans selection:bg-accent/20;
-    transition: background-color 180ms ease, color 180ms ease;
   }
 
   h1, h2, h3, h4 {
