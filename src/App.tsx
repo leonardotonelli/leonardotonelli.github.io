@@ -178,8 +178,8 @@ const Research = () => (
 
 const Projects = () => (
   <PageWrapper>
-    <Section title="Selected Projects">
-      <MacroAreaAccordion title="Recent research projects" titleClassName="text-accent" defaultOpen>
+    <Section title="Projects">
+      <MacroAreaAccordion title="Deep Learning & NLP" defaultOpen>
         <ProjectCard
           title="Frame-Level Multimodal Hate Localization"
           role="Deep Learning – EPFL"
@@ -199,6 +199,9 @@ const Projects = () => (
           tags={["Mechanistic Interpretability", "Pythia", "CKA", "Causal Ablation"]}
           github="https://github.com/leonardotonelli/ModernNLP-CS552"
         />
+      </MacroAreaAccordion>
+
+      <MacroAreaAccordion title="Reinforcement Learning" defaultOpen={false}>
         <ProjectCard
           title="The Geometry of Reward Identifiability in IRL"
           role="Reinforcement Learning – EPFL"
@@ -208,9 +211,6 @@ const Projects = () => (
           ]}
           tags={["Inverse RL", "MaxEnt IRL", "MDPs", "Identifiability"]}
         />
-      </MacroAreaAccordion>
-
-      <MacroAreaAccordion title="Reinforcement Learning" defaultOpen={false}>
         <ProjectCard
           title="Deep Q-Network (DQN) Reproduction"
           role="Head of Project – Hephaestus Applied AI"
@@ -223,7 +223,7 @@ const Projects = () => (
         />
       </MacroAreaAccordion>
 
-      <MacroAreaAccordion title="Deep Learning & Optimization">
+      <MacroAreaAccordion title="Optimization & Statistical Physics">
         <ProjectCard
           title="CIFAR-10 Optimizer Benchmark"
           role="Project Lead – Mathematics of Data, EPFL"
@@ -246,7 +246,7 @@ const Projects = () => (
         />
       </MacroAreaAccordion>
 
-      <MacroAreaAccordion title="Machine Learning">
+      <MacroAreaAccordion title="Statistical Machine Learning">
         <ProjectCard
           title="Manifold Learning Benchmark"
           role="Statistical Machine Learning – EPFL"
@@ -269,7 +269,7 @@ const Projects = () => (
         />
       </MacroAreaAccordion>
 
-      <MacroAreaAccordion title="Causal Inference">
+      <MacroAreaAccordion title="Statistical Inference">
         <ProjectCard
           title="Handling Incomplete Data: EM vs. Imputation"
           role="Statistical Computation Course Project"
