@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { ExternalLink, Github, ImageIcon, X } from "lucide-react";
@@ -37,22 +37,48 @@ export function ProjectCard({
   imageAlt,
 }: ProjectProps) {
   const [isImageOpen, setIsImageOpen] = useState(false);
-  const dialogTitleId = useId();
+  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 });
+  const imageButtonRef = useRef<HTMLButtonElement>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isImageOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
+    const updatePreviewPosition = () => {
+      const rect = imageButtonRef.current?.getBoundingClientRect();
+      if (!rect) return;
+
+      const previewWidth = Math.min(window.innerWidth < 768 ? 280 : 360, window.innerWidth - 32);
+      const horizontalMargin = previewWidth / 2 + 16;
+      const verticalMargin = Math.min(window.innerHeight * 0.22, 190);
+
+      setPreviewPosition({
+        x: Math.min(Math.max(rect.left + rect.width / 2, horizontalMargin), window.innerWidth - horizontalMargin),
+        y: Math.min(Math.max(rect.top + rect.height / 2, verticalMargin), window.innerHeight - verticalMargin),
+      });
+    };
+
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsImageOpen(false);
     };
+    const closeOutside = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (!previewRef.current?.contains(target) && !imageButtonRef.current?.contains(target)) {
+        setIsImageOpen(false);
+      }
+    };
 
-    document.body.style.overflow = "hidden";
+    updatePreviewPosition();
     window.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("resize", updatePreviewPosition);
+    window.addEventListener("scroll", updatePreviewPosition, true);
+    document.addEventListener("pointerdown", closeOutside);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("resize", updatePreviewPosition);
+      window.removeEventListener("scroll", updatePreviewPosition, true);
+      document.removeEventListener("pointerdown", closeOutside);
     };
   }, [isImageOpen]);
 
@@ -63,8 +89,9 @@ export function ProjectCard({
           <div className="self-center shrink-0 w-20 md:w-28 aspect-square rounded-md border border-border/60 bg-bg/60 overflow-hidden flex items-center justify-center">
           {image ? (
             <button
+              ref={imageButtonRef}
               type="button"
-              onClick={() => setIsImageOpen(true)}
+              onClick={() => setIsImageOpen((open) => !open)}
               className="project-image-button relative w-full h-full cursor-zoom-in overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent/60"
               aria-label={`Enlarge image for ${title}`}
             >
@@ -179,24 +206,20 @@ export function ProjectCard({
       {createPortal(
         <AnimatePresence>
           {image && isImageOpen && (
-            <motion.div
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/75 p-4 md:p-8 backdrop-blur-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-              onClick={() => setIsImageOpen(false)}
+            <div
+              ref={previewRef}
+              className="fixed z-[100] w-[min(280px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 md:w-[360px]"
+              style={{ left: previewPosition.x, top: previewPosition.y }}
               role="dialog"
-              aria-modal="true"
-              aria-labelledby={dialogTitleId}
+              aria-label={`${title} full image preview`}
             >
               <motion.div
-                className="relative flex max-h-[76vh] max-w-[88vw] flex-col items-center md:max-w-4xl"
-                initial={{ opacity: 0, scale: 0.96, y: 8 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.98, y: 4 }}
-                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                onClick={(event) => event.stopPropagation()}
+                className="relative flex max-h-[46vh] items-center justify-center rounded-md border border-border/70 bg-bg p-1.5 shadow-xl"
+                initial={{ opacity: 0, scale: 0.28 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.45 }}
+                transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                style={{ transformOrigin: "center" }}
               >
                 <button
                   type="button"
@@ -204,7 +227,7 @@ export function ProjectCard({
                   onKeyDown={(event) => {
                     if (event.key === "Tab") event.preventDefault();
                   }}
-                  className="absolute -right-2 -top-2 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-border/70 bg-bg text-ink shadow-md transition-transform duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  className="absolute -right-2 -top-2 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-border/70 bg-bg text-ink shadow-md transition-transform duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   aria-label="Close enlarged image"
                   autoFocus
                 >
@@ -213,14 +236,12 @@ export function ProjectCard({
                 <img
                   src={image}
                   alt={imageAlt || `${title} project image`}
-                  className="max-h-[68vh] max-w-full rounded-md bg-bg object-contain shadow-2xl"
+                  className="max-h-[42vh] max-w-full cursor-zoom-out rounded-sm object-contain"
                   decoding="async"
+                  onClick={() => setIsImageOpen(false)}
                 />
-                <p id={dialogTitleId} className="mt-3 max-w-xl text-center text-xs text-white/80">
-                  {title}
-                </p>
               </motion.div>
-            </motion.div>
+            </div>
           )}
         </AnimatePresence>,
         document.body
