@@ -1,4 +1,7 @@
-import { ExternalLink, Github, ImageIcon } from "lucide-react";
+import { useEffect, useId, useState } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "motion/react";
+import { ExternalLink, Github, ImageIcon, X } from "lucide-react";
 
 interface ProjectProps {
   title: string;
@@ -33,27 +36,56 @@ export function ProjectCard({
   image,
   imageAlt,
 }: ProjectProps) {
+  const [isImageOpen, setIsImageOpen] = useState(false);
+  const dialogTitleId = useId();
+
+  useEffect(() => {
+    if (!isImageOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsImageOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isImageOpen]);
+
   return (
-    <article className="group relative mb-4 p-5 rounded-lg border border-border/60 bg-border/10 last:mb-0">
-      <div className="flex items-start gap-4 md:gap-5">
-        <div className="self-center shrink-0 w-20 md:w-28 aspect-square rounded-md border border-border/60 bg-bg/60 overflow-hidden flex items-center justify-center">
+    <>
+      <article className="group relative mb-4 p-5 rounded-lg border border-border/60 bg-border/10 last:mb-0">
+        <div className="flex items-start gap-4 md:gap-5">
+          <div className="self-center shrink-0 w-20 md:w-28 aspect-square rounded-md border border-border/60 bg-bg/60 overflow-hidden flex items-center justify-center">
           {image ? (
-            <img
-              src={image}
-              alt={imageAlt || `${title} project image`}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
+            <button
+              type="button"
+              onClick={() => setIsImageOpen(true)}
+              className="project-image-button relative w-full h-full cursor-zoom-in overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent/60"
+              aria-label={`Enlarge image for ${title}`}
+            >
+              <img
+                src={image}
+                alt={imageAlt || `${title} project image`}
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+              <span className="absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/[0.03]" aria-hidden="true" />
+            </button>
           ) : (
             <>
               <ImageIcon size={20} className="text-muted/50" aria-hidden="true" />
               <span className="sr-only">Image placeholder for {title}</span>
             </>
           )}
-        </div>
+          </div>
 
-        <div className="min-w-0 flex-1">
+          <div className="min-w-0 flex-1">
           <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4">
             <div className="flex items-start gap-2 min-w-0">
               <h3 className="text-lg font-medium text-ink group-hover:text-accent transition-colors">
@@ -140,8 +172,59 @@ export function ProjectCard({
               </span>
             ))}
           </div>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+
+      {createPortal(
+        <AnimatePresence>
+          {image && isImageOpen && (
+            <motion.div
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/75 p-4 md:p-8 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              onClick={() => setIsImageOpen(false)}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={dialogTitleId}
+            >
+              <motion.div
+                className="relative flex max-h-[92vh] max-w-[94vw] flex-col items-center"
+                initial={{ opacity: 0, scale: 0.96, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.98, y: 4 }}
+                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                onClick={(event) => event.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  onClick={() => setIsImageOpen(false)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Tab") event.preventDefault();
+                  }}
+                  className="absolute -right-2 -top-2 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-border/70 bg-bg text-ink shadow-md transition-transform duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  aria-label="Close enlarged image"
+                  autoFocus
+                >
+                  <X size={17} />
+                </button>
+                <img
+                  src={image}
+                  alt={imageAlt || `${title} project image`}
+                  className="max-h-[84vh] max-w-[92vw] rounded-md bg-bg object-contain shadow-2xl"
+                  decoding="async"
+                />
+                <p id={dialogTitleId} className="mt-3 max-w-xl text-center text-xs text-white/80">
+                  {title}
+                </p>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </>
   );
 }

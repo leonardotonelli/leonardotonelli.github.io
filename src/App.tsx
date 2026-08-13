@@ -190,6 +190,8 @@ const Projects = () => (
         <ProjectCard
           title="Frame-Level Multimodal Hate Localization"
           role="Deep Learning – EPFL"
+          image="/DL_preview.png"
+          imageAlt="Frame-level multimodal hate localization model overview"
           highlights={[
             "Built a frame-level video pipeline combining visual, audio, speech, and OCR features from SigLIP2, WavLM, Whisper, HateBERT, and EasyOCR.",
             "Compared fusion models and ablations; the full model reached 0.733 frame mAP and 0.852 AUC on HateMM."
@@ -199,6 +201,8 @@ const Projects = () => (
         <ProjectCard
           title="Cross-Model Circuit Alignment in Pythia LLMs"
           role="Modern NLP – EPFL"
+          image="/MNLP.png"
+          imageAlt="Cross-model circuit alignment results"
           highlights={[
             "Studied whether attention-head circuits from Pythia-410M can help locate related circuits in Pythia-1B on the Indirect Object Identification task.",
             "Used CKA alignment and causal ablations; the results suggest alignment is useful as a lower-compute pre-filter, rather than a replacement for target-side attribution."
@@ -212,6 +216,8 @@ const Projects = () => (
         <ProjectCard
           title="The Geometry of Reward Identifiability in IRL"
           role="Reinforcement Learning – EPFL"
+          image="/IRL.png"
+          imageAlt="Reward identifiability geometry diagram"
           highlights={[
             "Studied when entropy-regularized expert behavior identifies a reward, across finite-horizon, infinite-horizon, and multi-environment MDPs.",
             "Connected access, rank, and graph-coverability conditions and derived extensions for multiple experts and approximate settings."
@@ -221,6 +227,8 @@ const Projects = () => (
         <ProjectCard
           title="Deep Q-Network (DQN) Reproduction"
           role="Head of Project – Hephaestus Applied AI"
+          image="/DQN.gif"
+          imageAlt="Deep Q-Network agent demonstration"
           highlights={[
             "Led a team of three in reproducing the DQN architecture from Mnih et al. (2013) in PyTorch, Gymnasium, and NumPy.",
             "Trained and evaluated the agent on Demon Attack using experience replay, a target network, reward clipping, and ε-greedy exploration."
@@ -234,6 +242,8 @@ const Projects = () => (
         <ProjectCard
           title="CIFAR-10 Optimizer Benchmark"
           role="Mathematics of Data – EPFL"
+          image="/optimizers.png"
+          imageAlt="CIFAR-10 optimizer benchmark comparison"
           highlights={[
             "Compared Adam, Muon, Scion, and Dion on CIFAR-10 using ResNet-18 and a small Vision Transformer.",
             "Built reproducible mixed-precision training and evaluation pipelines for convergence and validation accuracy."
@@ -244,6 +254,8 @@ const Projects = () => (
         <ProjectCard
           title="Replicated Approaches to the Binary Perceptron"
           role="Bachelor Thesis – Advisor: Prof. Luca Saglietti"
+          image="/bachelor_thesis_preview.png"
+          imageAlt="Binary Perceptron replicated optimization comparison"
           highlights={[
             "Replicated entropy-based Binary Perceptron solvers using Replicated Simulated Annealing and Replicated Gradient Descent.",
             "Compared interacting-replica methods with standard baselines across problem sizes and constraint densities."
@@ -257,6 +269,8 @@ const Projects = () => (
         <ProjectCard
           title="Manifold Learning Benchmark"
           role="Statistical Machine Learning – EPFL"
+          image="/manifold_learning.png"
+          imageAlt="Manifold learning benchmark visualization"
           highlights={[
             "Compared PCA, Isomap, LLE, Laplacian Eigenmaps, t-SNE, UMAP, and autoencoders on synthetic and real datasets.",
             "Measured local and global structure, downstream performance, stability, and out-of-sample behavior."
@@ -267,6 +281,8 @@ const Projects = () => (
         <ProjectCard
           title="Credit Scoring under Class Imbalance"
           role="Project Lead – Bocconi University"
+          image="/credit_risk.png"
+          imageAlt="Credit-risk class imbalance results"
           highlights={[
             "Compared resampling, cost-sensitive learning, and ensemble methods for a credit-default dataset with a 6.7% minority class.",
             "A boosted-tree model with random undersampling improved ROC-AUC from 0.8077 for logistic regression to 0.8582."
@@ -280,6 +296,8 @@ const Projects = () => (
         <ProjectCard
           title="Handling Incomplete Data: EM vs. Imputation"
           role="Statistical Computation Course Project"
+          image="/EM_imputation.png"
+          imageAlt="EM and imputation method comparison"
           highlights={[
             "Compared EM, MICE, kNN, and baseline imputations under MCAR, MAR, and MNAR missingness.",
             "Implemented EM for multivariate-normal estimation and semi-supervised Gaussian mixtures, then tested the methods in simulation and on clinical data."
