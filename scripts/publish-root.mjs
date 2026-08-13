@@ -7,6 +7,8 @@ for (const file of await readdir("dist/assets")) {
   await copyFile(`dist/assets/${file}`, `assets/${file}`);
 }
 
-for (const file of ["index.html", "404.html", "profile.jpg", "resume.pdf"]) {
-  await copyFile(`dist/${file}`, file);
+for (const entry of await readdir("dist", { withFileTypes: true })) {
+  if (entry.isFile()) {
+    await copyFile(`dist/${entry.name}`, entry.name);
+  }
 }
