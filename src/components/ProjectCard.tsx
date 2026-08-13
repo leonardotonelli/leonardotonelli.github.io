@@ -18,6 +18,7 @@ interface ProjectProps {
   github?: string;
   image?: string;
   imageAlt?: string;
+  previewSize?: "default" | "wide";
 }
 
 export function ProjectCard({
@@ -35,9 +36,10 @@ export function ProjectCard({
   github,
   image,
   imageAlt,
+  previewSize = "default",
 }: ProjectProps) {
   const [isImageOpen, setIsImageOpen] = useState(false);
-  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 });
+  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0, width: 360 });
   const imageButtonRef = useRef<HTMLButtonElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
 
@@ -48,13 +50,17 @@ export function ProjectCard({
       const rect = imageButtonRef.current?.getBoundingClientRect();
       if (!rect) return;
 
-      const previewWidth = Math.min(window.innerWidth < 768 ? 280 : 360, window.innerWidth - 32);
+      const preferredWidth = window.innerWidth < 768
+        ? previewSize === "wide" ? 340 : 280
+        : previewSize === "wide" ? 520 : 360;
+      const previewWidth = Math.min(preferredWidth, window.innerWidth - 32);
       const horizontalMargin = previewWidth / 2 + 16;
       const verticalMargin = Math.min(window.innerHeight * 0.22, 190);
 
       setPreviewPosition({
         x: Math.min(Math.max(rect.left + rect.width / 2, horizontalMargin), window.innerWidth - horizontalMargin),
         y: Math.min(Math.max(rect.top + rect.height / 2, verticalMargin), window.innerHeight - verticalMargin),
+        width: previewWidth,
       });
     };
 
@@ -80,7 +86,7 @@ export function ProjectCard({
       window.removeEventListener("scroll", updatePreviewPosition, true);
       document.removeEventListener("pointerdown", closeOutside);
     };
-  }, [isImageOpen]);
+  }, [isImageOpen, previewSize]);
 
   return (
     <>
@@ -208,8 +214,8 @@ export function ProjectCard({
           {image && isImageOpen && (
             <div
               ref={previewRef}
-              className="fixed z-[100] w-[min(280px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 md:w-[360px]"
-              style={{ left: previewPosition.x, top: previewPosition.y }}
+              className="fixed z-[100] -translate-x-1/2 -translate-y-1/2"
+              style={{ left: previewPosition.x, top: previewPosition.y, width: previewPosition.width }}
               role="dialog"
               aria-label={`${title} full image preview`}
             >
@@ -227,11 +233,11 @@ export function ProjectCard({
                   onKeyDown={(event) => {
                     if (event.key === "Tab") event.preventDefault();
                   }}
-                  className="absolute -right-2 -top-2 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-border/70 bg-bg text-ink shadow-md transition-transform duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  className="absolute -right-1.5 -top-1.5 z-10 flex h-6 w-6 items-center justify-center rounded-full border border-border/30 bg-bg/40 text-muted/70 opacity-70 shadow-sm backdrop-blur-sm transition-[opacity,background-color,color,transform] duration-200 hover:scale-105 hover:bg-bg/75 hover:text-ink hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   aria-label="Close enlarged image"
                   autoFocus
                 >
-                  <X size={17} />
+                  <X size={12} strokeWidth={1.75} />
                 </button>
                 <img
                   src={image}

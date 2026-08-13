@@ -192,6 +192,7 @@ const Projects = () => (
           role="Deep Learning – EPFL"
           image="/DL_preview.png"
           imageAlt="Frame-level multimodal hate localization model overview"
+          previewSize="wide"
           highlights={[
             "Built a frame-level video pipeline combining visual, audio, speech, and OCR features from SigLIP2, WavLM, Whisper, HateBERT, and EasyOCR.",
             "Compared fusion models and ablations; the full model reached 0.733 frame mAP and 0.852 AUC on HateMM."
