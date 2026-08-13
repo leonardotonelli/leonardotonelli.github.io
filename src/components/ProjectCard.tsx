@@ -191,7 +191,7 @@ export function ProjectCard({
               aria-labelledby={dialogTitleId}
             >
               <motion.div
-                className="relative flex max-h-[92vh] max-w-[94vw] flex-col items-center"
+                className="relative flex max-h-[76vh] max-w-[88vw] flex-col items-center md:max-w-4xl"
                 initial={{ opacity: 0, scale: 0.96, y: 8 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98, y: 4 }}
@@ -213,7 +213,7 @@ export function ProjectCard({
                 <img
                   src={image}
                   alt={imageAlt || `${title} project image`}
-                  className="max-h-[84vh] max-w-[92vw] rounded-md bg-bg object-contain shadow-2xl"
+                  className="max-h-[68vh] max-w-full rounded-md bg-bg object-contain shadow-2xl"
                   decoding="async"
                 />
                 <p id={dialogTitleId} className="mt-3 max-w-xl text-center text-xs text-white/80">
