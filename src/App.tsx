@@ -12,6 +12,8 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <div className="w-full">{children}</div>
 );
 
+const SHOW_PAPER_SUMMARIES = false;
+
 const Home = () => {
   const [isSummariesOpen, setIsSummariesOpen] = React.useState(false);
 
@@ -69,7 +71,7 @@ const Home = () => {
               </div>
 
               {/* Paper Summaries (Embed) moved here */}
-              <div className="mt-16">
+              {SHOW_PAPER_SUMMARIES && <div className="mt-16">
                 <button
                   onClick={() => setIsSummariesOpen((open) => !open)}
                   aria-expanded={isSummariesOpen}
@@ -125,7 +127,7 @@ const Home = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </div>}
           </div>
         </div>
       </Section>
