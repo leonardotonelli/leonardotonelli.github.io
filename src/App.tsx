@@ -61,7 +61,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="max-w-3xl mb-8">
+              <div className="w-full mb-8">
                 <p className="mb-4">
                   I’m interested in turning ideas from statistics and machine learning into useful tools for scientific and practical problems, especially in medicine, biology, and engineering.
                 </p>
