@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, MotionConfig } from "motion/react";
-import { Github, Linkedin, Mail, FileText, Layers3, ChartNoAxesCombined, GitBranch, Network, ChevronDown, Menu, X, Moon, Sun } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, Layers3, ChartNoAxesCombined, GitBranch, Network, ChevronDown, ArrowRight, Menu, X, Moon, Sun } from "lucide-react";
 import { Section } from "./components/Section";
 import { ProjectCard } from "./components/ProjectCard";
 import { ExperienceItem } from "./components/ExperienceItem";
@@ -41,7 +41,7 @@ const Home = () => {
                     Leonardo Tonelli
                   </h1>
                   <p className="text-base md:text-lg font-serif italic text-muted mb-6 leading-relaxed">
-                    MSc Statistics student at EPFL, with a minor in Data Science. Currently a research intern at OIST.
+                    MSc Statistics at EPFL · Research Intern at OIST
                   </p>
 
                   <div className="flex flex-wrap gap-3">
@@ -61,14 +61,31 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="prose prose-ink prose-sm max-w-none mb-12">
+              <div className="max-w-3xl mb-8">
                 <p className="mb-4">
-                  I study statistics and machine learning, with a current focus on representation learning, causal inference, and reinforcement learning. At OIST, I am working on action-conditioned JEPA image models and studying what they retain when future observations are uncertain.
+                  I’m interested in turning ideas from statistics and machine learning into useful tools for scientific and practical problems, especially in medicine, biology, and engineering.
                 </p>
-                <p className="mb-4">
-                  Before EPFL, I completed a BSc in Economics and Computer Science at Bocconi University and spent a semester at NTU Singapore. My bachelor thesis studied replicated optimization methods for the Binary Perceptron.
+                <p>
+                  My work combines statistical modeling, deep learning, and experimental evaluation. At OIST, I study what predictive image models learn when future observations are uncertain.
                 </p>
               </div>
+
+              <nav aria-label="Explore my work" className="flex flex-wrap gap-x-8 gap-y-4 border-t border-border/60 pt-6 mb-8">
+                {[
+                  { to: "/research", label: "Research interests" },
+                  { to: "/projects", label: "Projects" },
+                  { to: "/experience", label: "Experience & education" },
+                ].map(({ to, label }) => (
+                  <NavLink
+                    key={to}
+                    to={to}
+                    className="inline-flex items-center gap-2 py-1 text-sm font-medium text-ink hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm"
+                  >
+                    {label}
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </NavLink>
+                ))}
+              </nav>
 
               {/* Paper Summaries (Embed) moved here */}
               {SHOW_PAPER_SUMMARIES && <div className="mt-16">
