@@ -66,7 +66,7 @@ const Home = () => {
                   I’m interested in turning ideas from statistics and machine learning into useful tools for scientific and practical problems, especially in medicine, biology, and engineering.
                 </p>
                 <p>
-                  My work combines statistical modeling, deep learning, and experimental evaluation. At OIST, I study what predictive image models learn when future observations are uncertain.
+                  I started in Economics and Computer Science at Bocconi, drawn to real-world problems and the quantitative tools to tackle them. Working as a software developer and research assistant showed me how building useful systems and drawing careful conclusions from data can inform each other. At EPFL, my Master’s in Statistics deepened my interest in machine learning; through deep learning and NLP projects and research at OIST, I found that I especially enjoy investigating why methods work, where they fail, and how to improve them.
                 </p>
               </div>
 
