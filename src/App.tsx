@@ -157,7 +157,7 @@ const Research = () => (
     <Section title="Research Interests">
       <div className="prose prose-ink max-w-none mb-14">
         <p>
-          My research interests broadly lie in statistical machine learning and representation learning. I am particularly interested in methods for learning useful and reliable representations from complex, high-dimensional, or structured data.
+          My research interests are still evolving as I progress through my studies and gain research experience. So far, I have been particularly drawn to statistical machine learning and representation learning, including how we can learn useful and reliable representations from complex data. The areas below reflect topics I am exploring and would like to understand better.
         </p>
       </div>
 
@@ -193,9 +193,9 @@ const Research = () => (
       </div>
 
       <div className="prose prose-ink max-w-none">
-        <h3 className="text-xl font-medium mb-4">Research direction</h3>
+        <h3 className="text-xl font-medium mb-4">What draws me to research</h3>
         <p>
-          I am most attracted to methodological research that is theoretically or statistically grounded while motivated by meaningful real-world applications. I am interested in combining modern deep learning with statistical ideas, and in understanding both how these methods work and how they can be applied effectively.
+          As I learn more, I find myself drawn to problems that combine statistical reasoning with modern machine learning. I enjoy trying to understand why methods work, where they fall short, and how they might be improved. I would like to keep exploring these questions in connection with practical problems, especially in medicine, biology, and engineering.
         </p>
       </div>
     </Section>
